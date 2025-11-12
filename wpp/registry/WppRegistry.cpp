@@ -26,9 +26,6 @@ WppRegistry::WppRegistry(lwm2m_context_t &context): _context(context) {
 	#ifdef OBJ_O_2_LWM2M_ACCESS_CONTROL
 	_objects.push_back(new ObjectImpl<Lwm2mAccessControl>(_context, LWM2M_ACCESS_CONTROL_OBJ_INFO));
 	#endif
-	#if OBJ_O_3339_AUDIO_CLIP
-	_objects.push_back(new ObjectImpl<AudioClip>(_context, AUDIO_CLIP_OBJ_INFO));
-	#endif
 	#if OBJ_O_5_FIRMWARE_UPDATE
 	_objects.push_back(new ObjectImpl<FirmwareUpdate>(_context, FIRMWARE_UPDATE_OBJ_INFO));
 	#endif
@@ -41,8 +38,38 @@ WppRegistry::WppRegistry(lwm2m_context_t &context): _context(context) {
 	#if OBJ_O_3303_TEMPERATURE
 	_objects.push_back(new ObjectImpl<Temperature>(_context, TEMPERATURE_OBJ_INFO));
 	#endif
-	#if OBJ_O_3313_ACCELEROMETER
-	_objects.push_back(new ObjectImpl<Accelerometer>(_context, ACCELEROMETER_OBJ_INFO));
+	#if OBJ_O_3202_ANALOG_INPUT
+	_objects.push_back(new ObjectImpl<AnalogInput>(_context, ANALOG_INPUT_OBJ_INFO));
+	#endif
+	#if OBJ_O_3203_ANALOG_OUTPUT
+	_objects.push_back(new ObjectImpl<AnalogOutput>(_context, ANALOG_OUTPUT_OBJ_INFO));
+	#endif
+	#if OBJ_O_3300_GENERIC_SENSOR
+	_objects.push_back(new ObjectImpl<GenericSensor>(_context, GENERIC_SENSOR_OBJ_INFO));
+	#endif
+	#if OBJ_O_3311_LIGHT_CONTROL
+	_objects.push_back(new ObjectImpl<LightControl>(_context, LIGHT_CONTROL_OBJ_INFO));
+	#endif
+	#if OBJ_O_3316_VOLTAGE
+	_objects.push_back(new ObjectImpl<Voltage>(_context, VOLTAGE_OBJ_INFO));
+	#endif
+	#if OBJ_O_3317_CURRENT
+	_objects.push_back(new ObjectImpl<Current>(_context, CURRENT_OBJ_INFO));
+	#endif
+	#if OBJ_O_3322_LOAD
+	_objects.push_back(new ObjectImpl<Load>(_context, LOAD_OBJ_INFO));
+	#endif
+	#if OBJ_O_3323_PRESSURE
+	_objects.push_back(new ObjectImpl<Pressure>(_context, PRESSURE_OBJ_INFO));
+	#endif
+	#if OBJ_O_3328_POWER
+	_objects.push_back(new ObjectImpl<Power>(_context, POWER_OBJ_INFO));
+	#endif
+	#if OBJ_O_3336_IPSO3336
+	_objects.push_back(new ObjectImpl<Ipso3336>(_context, IPSO3336_OBJ_INFO));
+	#endif
+	#if OBJ_O_6_LOCATION
+	_objects.push_back(new ObjectImpl<Location>(_context, LOCATION_OBJ_INFO));
 	#endif
 	/* ---------- Optional objects init block end ---------- */
 }
@@ -112,11 +139,6 @@ Object & WppRegistry::lwm2mAccessControl() {
 	return *object(OBJ_ID::LWM2M_ACCESS_CONTROL);
 }
 #endif
-#if OBJ_O_3339_AUDIO_CLIP
-Object & WppRegistry::audioClip() {
-	return *object(OBJ_ID::AUDIO_CLIP);
-}
-#endif
 #if OBJ_O_5_FIRMWARE_UPDATE
 Object & WppRegistry::firmwareUpdate() {
 	return *object(OBJ_ID::FIRMWARE_UPDATE);
@@ -137,9 +159,59 @@ Object & WppRegistry::temperature() {
 	return *object(OBJ_ID::TEMPERATURE);
 }
 #endif
-#if OBJ_O_3313_ACCELEROMETER
-Object & WppRegistry::accelerometer() {
-	return *object(OBJ_ID::ACCELEROMETER);
+#if OBJ_O_3202_ANALOG_INPUT
+Object & WppRegistry::analogInput() {
+	return *object(OBJ_ID::ANALOG_INPUT);
+}
+#endif
+#if OBJ_O_3203_ANALOG_OUTPUT
+Object & WppRegistry::analogOutput() {
+	return *object(OBJ_ID::ANALOG_OUTPUT);
+}
+#endif
+#if OBJ_O_3300_GENERIC_SENSOR
+Object & WppRegistry::genericSensor() {
+	return *object(OBJ_ID::GENERIC_SENSOR);
+}
+#endif
+#if OBJ_O_3311_LIGHT_CONTROL
+Object & WppRegistry::lightControl() {
+	return *object(OBJ_ID::LIGHT_CONTROL);
+}
+#endif
+#if OBJ_O_3316_VOLTAGE
+Object & WppRegistry::voltage() {
+	return *object(OBJ_ID::VOLTAGE);
+}
+#endif
+#if OBJ_O_3317_CURRENT
+Object & WppRegistry::current() {
+	return *object(OBJ_ID::CURRENT);
+}
+#endif
+#if OBJ_O_3322_LOAD
+Object & WppRegistry::load() {
+	return *object(OBJ_ID::LOAD);
+}
+#endif
+#if OBJ_O_3323_PRESSURE
+Object & WppRegistry::pressure() {
+	return *object(OBJ_ID::PRESSURE);
+}
+#endif
+#if OBJ_O_3328_POWER
+Object & WppRegistry::power() {
+	return *object(OBJ_ID::POWER);
+}
+#endif
+#if OBJ_O_3336_IPSO3336
+Object & WppRegistry::ipso3336() {
+	return *object(OBJ_ID::IPSO3336);
+}
+#endif
+#if OBJ_O_6_LOCATION
+Object & WppRegistry::location() {
+	return *object(OBJ_ID::LOCATION);
 }
 #endif
 /* ---------- Optional objects method block end ---------- */

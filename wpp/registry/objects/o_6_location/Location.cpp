@@ -1,6 +1,6 @@
 /*
  * Location
- * Generated on: 2025-11-12 10:30:00
+ * Generated on: 2025-11-12 12:55:51
  * Created by: Sinai RnD
  */
 
@@ -114,27 +114,27 @@ void Location::resourcesCreate() {
 
 void Location::resourcesInit() {
 	/* --------------- Code_cpp block 7 start --------------- */
-	resource(LATITUDE_0)->set<FLOAT_T>( /* TODO */ );
-	resource(LATITUDE_0)->setDataVerifier( /* TODO */ );
-	resource(LONGITUDE_1)->set<FLOAT_T>( /* TODO */ );
-	resource(LONGITUDE_1)->setDataVerifier( /* TODO */ );
+	resource(LATITUDE_0)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(LATITUDE_0)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	resource(LONGITUDE_1)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(LONGITUDE_1)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#if RES_6_2
-	resource(ALTITUDE_2)->set<FLOAT_T>( /* TODO */ );
-	resource(ALTITUDE_2)->setDataVerifier( /* TODO */ );
+	resource(ALTITUDE_2)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(ALTITUDE_2)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_6_3
-	resource(RADIUS_3)->set<FLOAT_T>( /* TODO */ );
-	resource(RADIUS_3)->setDataVerifier( /* TODO */ );
+	resource(RADIUS_3)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(RADIUS_3)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_6_4
-	resource(VELOCITY_4)->set<OPAQUE_T>( /* TODO */ );
-	resource(VELOCITY_4)->setDataVerifier( /* TODO */ );
+	resource(VELOCITY_4)->set<OPAQUE_T>(0); // TODO: Set appropriate value
+	// resource(VELOCITY_4)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
-	resource(TIMESTAMP_5)->set<TIME_T>( /* TODO */ );
-	resource(TIMESTAMP_5)->setDataVerifier( /* TODO */ );
+	resource(TIMESTAMP_5)->set<TIME_T>(0); // TODO: Set appropriate value
+	// resource(TIMESTAMP_5)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#if RES_6_6
-	resource(SPEED_6)->set<FLOAT_T>( /* TODO */ );
-	resource(SPEED_6)->setDataVerifier( /* TODO */ );
+	resource(SPEED_6)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(SPEED_6)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	/* --------------- Code_cpp block 7 end --------------- */
 }

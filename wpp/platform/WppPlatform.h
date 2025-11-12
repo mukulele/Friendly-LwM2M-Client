@@ -9,6 +9,7 @@
 #define WPP_PLATFORM_H_
 
 #include <string>
+#include <stdarg.h>
 
 namespace wpp {
 

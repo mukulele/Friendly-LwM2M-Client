@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblwm2m_bridge.a CMakeFiles/lwm2m_bridge.dir/src/signalk_main.cpp.o
+/usr/bin/ranlib liblwm2m_bridge.a

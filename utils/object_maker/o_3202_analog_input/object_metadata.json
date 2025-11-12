@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Analog Input",
+        "id": "3202",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "AnalogInput",
+        "camelcase": "analogInput",
+        "define": "OBJ_O_3202_ANALOG_INPUT",
+        "up_underline": "ANALOG_INPUT"
+    },
+    "object_files": {
+        "impl_h": "AnalogInput.h",
+        "impl_cpp": "AnalogInput.cpp",
+        "config": "AnalogInputConfig.h",
+        "info": "AnalogInputInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

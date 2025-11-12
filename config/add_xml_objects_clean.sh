@@ -23,9 +23,25 @@ for xml_file in "${XML_FILES[@]}"; do
         echo ""
         echo "Processing $object_name..."
         
+        # Handle Object 3336 naming conflict with on-the-fly XML modification
+        if [[ "$object_name" == *"3336"* ]]; then
+            echo "  Applying on-the-fly naming fix for Object 3336 (Location -> IPSO3336)..."
+            # Create temporary XML file with modified name
+            temp_xml_file="/tmp/$(basename "$xml_file")"
+            sed 's/<Name>Location<\/Name>/<Name>IPSO3336<\/Name>/g' "$xml_file" > "$temp_xml_file"
+            xml_to_process="$temp_xml_file"
+        else
+            xml_to_process="$xml_file"
+        fi
+        
         # Generate the object
         echo "  Generating object..."
-        python3 object_maker.py -g file "$xml_file"
+        python3 object_maker.py -g file "$xml_to_process"
+        
+        # Clean up temporary file if created
+        if [[ "$object_name" == *"3336"* ]]; then
+            rm -f "$temp_xml_file"
+        fi
         
         if [ $? -eq 0 ]; then
             echo "  ✓ Generation successful"

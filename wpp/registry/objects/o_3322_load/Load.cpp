@@ -1,6 +1,6 @@
 /*
  * Load
- * Generated on: 2025-11-12 10:30:05
+ * Generated on: 2025-11-12 12:55:43
  * Created by: Sinai RnD
  */
 
@@ -136,55 +136,55 @@ void Load::resourcesCreate() {
 
 void Load::resourcesInit() {
 	/* --------------- Code_cpp block 7 start --------------- */
-	resource(SENSOR_VALUE_5700)->set<FLOAT_T>( /* TODO */ );
-	resource(SENSOR_VALUE_5700)->setDataVerifier( /* TODO */ );
+	resource(SENSOR_VALUE_5700)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(SENSOR_VALUE_5700)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#if RES_3322_5701
-	resource(SENSOR_UNITS_5701)->set<STRING_T>( /* TODO */ );
-	resource(SENSOR_UNITS_5701)->setDataVerifier( /* TODO */ );
+	resource(SENSOR_UNITS_5701)->set<STRING_T>(""); // TODO: Set appropriate value
+	// resource(SENSOR_UNITS_5701)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5601
-	resource(MIN_MEASURED_VALUE_5601)->set<FLOAT_T>( /* TODO */ );
-	resource(MIN_MEASURED_VALUE_5601)->setDataVerifier( /* TODO */ );
+	resource(MIN_MEASURED_VALUE_5601)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MIN_MEASURED_VALUE_5601)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5602
-	resource(MAX_MEASURED_VALUE_5602)->set<FLOAT_T>( /* TODO */ );
-	resource(MAX_MEASURED_VALUE_5602)->setDataVerifier( /* TODO */ );
+	resource(MAX_MEASURED_VALUE_5602)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MAX_MEASURED_VALUE_5602)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5603
-	resource(MIN_RANGE_VALUE_5603)->set<FLOAT_T>( /* TODO */ );
-	resource(MIN_RANGE_VALUE_5603)->setDataVerifier( /* TODO */ );
+	resource(MIN_RANGE_VALUE_5603)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MIN_RANGE_VALUE_5603)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5604
-	resource(MAX_RANGE_VALUE_5604)->set<FLOAT_T>( /* TODO */ );
-	resource(MAX_RANGE_VALUE_5604)->setDataVerifier( /* TODO */ );
+	resource(MAX_RANGE_VALUE_5604)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MAX_RANGE_VALUE_5604)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5605
-	resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->set<EXECUTE_T>( /* TODO */ );
-	resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->setDataVerifier( /* TODO */ );
+	// resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->set<EXECUTE_T>( /* TODO: Implement execute handler */ );
+	// resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5821
-	resource(CURRENT_CALIBRATION_5821)->set<FLOAT_T>( /* TODO */ );
-	resource(CURRENT_CALIBRATION_5821)->setDataVerifier( /* TODO */ );
+	resource(CURRENT_CALIBRATION_5821)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(CURRENT_CALIBRATION_5821)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5750
-	resource(APPLICATION_TYPE_5750)->set<STRING_T>( /* TODO */ );
-	resource(APPLICATION_TYPE_5750)->setDataVerifier( /* TODO */ );
+	resource(APPLICATION_TYPE_5750)->set<STRING_T>(""); // TODO: Set appropriate value
+	// resource(APPLICATION_TYPE_5750)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_5518
-	resource(TIMESTAMP_5518)->set<TIME_T>( /* TODO */ );
-	resource(TIMESTAMP_5518)->setDataVerifier( /* TODO */ );
+	resource(TIMESTAMP_5518)->set<TIME_T>(0); // TODO: Set appropriate value
+	// resource(TIMESTAMP_5518)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_6050
-	resource(FRACTIONAL_TIMESTAMP_6050)->set<FLOAT_T>( /* TODO */ );
-	resource(FRACTIONAL_TIMESTAMP_6050)->setDataVerifier( /* TODO */ );
+	resource(FRACTIONAL_TIMESTAMP_6050)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(FRACTIONAL_TIMESTAMP_6050)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_6042
-	resource(MEASUREMENT_QUALITY_INDICATOR_6042)->set<INT_T>( /* TODO */ );
-	resource(MEASUREMENT_QUALITY_INDICATOR_6042)->setDataVerifier( /* TODO */ );
+	resource(MEASUREMENT_QUALITY_INDICATOR_6042)->set<INT_T>(0); // TODO: Set appropriate value
+	// resource(MEASUREMENT_QUALITY_INDICATOR_6042)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3322_6049
-	resource(MEASUREMENT_QUALITY_LEVEL_6049)->set<INT_T>( /* TODO */ );
-	resource(MEASUREMENT_QUALITY_LEVEL_6049)->setDataVerifier( /* TODO */ );
+	resource(MEASUREMENT_QUALITY_LEVEL_6049)->set<INT_T>(0); // TODO: Set appropriate value
+	// resource(MEASUREMENT_QUALITY_LEVEL_6049)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	/* --------------- Code_cpp block 7 end --------------- */
 }

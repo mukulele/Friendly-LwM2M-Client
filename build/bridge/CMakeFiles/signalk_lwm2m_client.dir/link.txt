@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/signalk_lwm2m_client.dir/src/signalk_main.cpp.o -o signalk_lwm2m_client  -lwpp -lpthread 

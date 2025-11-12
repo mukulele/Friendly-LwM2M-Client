@@ -30,9 +30,6 @@
 #ifdef OBJ_O_2_LWM2M_ACCESS_CONTROL
 #include "o_2_lwm2m_access_control/Lwm2mAccessControl.h"
 #endif
-#ifdef OBJ_O_3339_AUDIO_CLIP
-#include "o_3339_audio_clip/AudioClip.h"
-#endif
 #ifdef OBJ_O_5_FIRMWARE_UPDATE
 #include "o_5_firmware_update/FirmwareUpdate.h"
 #endif
@@ -45,8 +42,38 @@
 #ifdef OBJ_O_3303_TEMPERATURE
 #include "o_3303_temperature/Temperature.h"
 #endif
-#ifdef OBJ_O_3313_ACCELEROMETER
-#include "o_3313_accelerometer/Accelerometer.h"
+#ifdef OBJ_O_3202_ANALOG_INPUT
+#include "o_3202_analog_input/AnalogInput.h"
+#endif
+#ifdef OBJ_O_3203_ANALOG_OUTPUT
+#include "o_3203_analog_output/AnalogOutput.h"
+#endif
+#ifdef OBJ_O_3300_GENERIC_SENSOR
+#include "o_3300_generic_sensor/GenericSensor.h"
+#endif
+#ifdef OBJ_O_3311_LIGHT_CONTROL
+#include "o_3311_light_control/LightControl.h"
+#endif
+#ifdef OBJ_O_3316_VOLTAGE
+#include "o_3316_voltage/Voltage.h"
+#endif
+#ifdef OBJ_O_3317_CURRENT
+#include "o_3317_current/Current.h"
+#endif
+#ifdef OBJ_O_3322_LOAD
+#include "o_3322_load/Load.h"
+#endif
+#ifdef OBJ_O_3323_PRESSURE
+#include "o_3323_pressure/Pressure.h"
+#endif
+#ifdef OBJ_O_3328_POWER
+#include "o_3328_power/Power.h"
+#endif
+#ifdef OBJ_O_3336_IPSO3336
+#include "o_3336_ipso3336/Ipso3336.h"
+#endif
+#ifdef OBJ_O_6_LOCATION
+#include "o_6_location/Location.h"
 #endif
 /* ---------- Optional objects include block end ---------- */
 
@@ -138,9 +165,6 @@ public:
 	#ifdef OBJ_O_2_LWM2M_ACCESS_CONTROL
 	Object & lwm2mAccessControl();
 	#endif
-	#ifdef OBJ_O_3339_AUDIO_CLIP
-	Object & audioClip();
-	#endif
 	#ifdef OBJ_O_5_FIRMWARE_UPDATE
 	Object & firmwareUpdate();
 	#endif
@@ -153,8 +177,38 @@ public:
 	#ifdef OBJ_O_3303_TEMPERATURE
 	Object & temperature();
 	#endif
-	#ifdef OBJ_O_3313_ACCELEROMETER
-	Object & accelerometer();
+	#ifdef OBJ_O_3202_ANALOG_INPUT
+	Object & analogInput();
+	#endif
+	#ifdef OBJ_O_3203_ANALOG_OUTPUT
+	Object & analogOutput();
+	#endif
+	#ifdef OBJ_O_3300_GENERIC_SENSOR
+	Object & genericSensor();
+	#endif
+	#ifdef OBJ_O_3311_LIGHT_CONTROL
+	Object & lightControl();
+	#endif
+	#ifdef OBJ_O_3316_VOLTAGE
+	Object & voltage();
+	#endif
+	#ifdef OBJ_O_3317_CURRENT
+	Object & current();
+	#endif
+	#ifdef OBJ_O_3322_LOAD
+	Object & load();
+	#endif
+	#ifdef OBJ_O_3323_PRESSURE
+	Object & pressure();
+	#endif
+	#ifdef OBJ_O_3328_POWER
+	Object & power();
+	#endif
+	#ifdef OBJ_O_3336_IPSO3336
+	Object & ipso3336();
+	#endif
+	#ifdef OBJ_O_6_LOCATION
+	Object & location();
 	#endif
 	/* ---------- Optional objects prototype block end ---------- */
 

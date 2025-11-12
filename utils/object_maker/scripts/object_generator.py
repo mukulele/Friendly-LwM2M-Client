@@ -24,6 +24,20 @@ class ObjectGenerator:
         self.object_names = None
         self.set_object_names()
 
+    def get_default_value_for_type(self, resource_type):
+        """Generate appropriate default values for different resource types"""
+        type_defaults = {
+            'FLOAT_T': '0.0f',
+            'DOUBLE_T': '0.0',
+            'INT_T': '0',
+            'UINT_T': '0',
+            'BOOL_T': 'false',
+            'STRING_T': '""',
+            'TIME_T': '0',
+            'EXECUTE_T': None  # Execute resources shouldn't have default values
+        }
+        return type_defaults.get(resource_type, '0')  # Default fallback
+
     def set_object_names(self):
         """The goal is to create the container of the Object's names of different format beforehand"""
         object_names = {}
@@ -176,19 +190,29 @@ class ObjectGenerator:
                   f"""\t/* --------------- Code_cpp block 7 start --------------- */\n"""
         for resource in self.resources_data:
             resource_type = self.parse_resource_data_type(resource[const.DATA_KEYS[const.KEY_TYPE]])
+            default_value = self.get_default_value_for_type(resource_type)
+            
             if resource[ "Mandatory"] == "MANDATORY":
-                # content += f"""\t\t#if {resource["Name"]}_{resource["Mandatory"]}\n\t"""
-                # content += f"\t_resources[{resource['Name']}_{resource['ID']}].set( /* TODO */ );\n"
-                # content += f"\t_resources[{resource['Name']}_{resource['ID']}].setDataVerifier( /* TODO */ );\n\n"
-                content += f"\tresource({resource['Name']}_{resource['ID']})->set<{resource_type}>( /* TODO */ );\n"
-                content += f"\tresource({resource['Name']}_{resource['ID']})->setDataVerifier( /* TODO */ );\n"
-                # content += f"\t\t#endif\n\n"
+                # Generate set operation with appropriate default value
+                if default_value is not None:  # Skip EXECUTE_T resources
+                    content += f"\tresource({resource['Name']}_{resource['ID']})->set<{resource_type}>({default_value}); // TODO: Set appropriate value\n"
+                else:
+                    content += f"\t// resource({resource['Name']}_{resource['ID']})->set<{resource_type}>( /* TODO: Implement execute handler */ );\n"
+                
+                # Comment out setDataVerifier as it's optional
+                content += f"\t// resource({resource['Name']}_{resource['ID']})->setDataVerifier( /* TODO: Add data verifier if needed */ );\n"
+                
             if resource["Mandatory"] == "OPTIONAL":
                 content += f"""\t#if {resource["Define"]}\n"""
-                # content += f"\t_resources[{resource['Name']}_{resource['ID']}].set( /* TODO */ );\n"
-                # content += f"\t_resources[{resource['Name']}_{resource['ID']}].setDataVerifier( /* TODO */ );\n"
-                content += f"\tresource({resource['Name']}_{resource['ID']})->set<{resource_type}>( /* TODO */ );\n"
-                content += f"\tresource({resource['Name']}_{resource['ID']})->setDataVerifier( /* TODO */ );\n"
+                
+                # Generate set operation with appropriate default value
+                if default_value is not None:  # Skip EXECUTE_T resources
+                    content += f"\tresource({resource['Name']}_{resource['ID']})->set<{resource_type}>({default_value}); // TODO: Set appropriate value\n"
+                else:
+                    content += f"\t// resource({resource['Name']}_{resource['ID']})->set<{resource_type}>( /* TODO: Implement execute handler */ );\n"
+                
+                # Comment out setDataVerifier as it's optional
+                content += f"\t// resource({resource['Name']}_{resource['ID']})->setDataVerifier( /* TODO: Add data verifier if needed */ );\n"
                 content += f"\t#endif\n"
         content += f"""\t/* --------------- Code_cpp block 7 end --------------- */\n}}"""
 

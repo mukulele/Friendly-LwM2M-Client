@@ -8,7 +8,9 @@ project(WppClient)
 add_subdirectory(doxg)
 # Add subdirectory with wpp library target
 add_subdirectory(wpp)
-# Add subdirectory with examples targets
-add_subdirectory(examples)
+# Add subdirectory with C++ bridge
+add_subdirectory(bridge)
+# Add subdirectory with examples targets (DISABLED - not needed for development)
+# add_subdirectory(examples)
 # Add subdirectory with Catch2 tests
 add_subdirectory(tests)
