@@ -1,6 +1,6 @@
 /*
  * Temperature
- * Generated on: 2024-06-27 12:56:50
+ * Generated on: 2025-11-12 12:46:12
  * Created by: Sinai RnD
  */
 
@@ -93,49 +93,91 @@ void Temperature::userOperationNotifier(ItemOp::TYPE type, const ResLink &resLin
 
 void Temperature::resourcesCreate() {
 	std::vector<Resource> resources = {
-		{SENSOR_VALUE_5700,                      ItemOp(ItemOp::READ),    IS_SINGLE::SINGLE, IS_MANDATORY::MANDATORY, TYPE_ID::FLOAT },   
-		#if RES_3303_5601                                                                                                                                                    
-		{MIN_MEASURED_VALUE_5601,                ItemOp(ItemOp::READ),    IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
-		#endif                                                                                                                                                               
-		#if RES_3303_5602                                                                                                                                                    
-		{MAX_MEASURED_VALUE_5602,                ItemOp(ItemOp::READ),    IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
-		#endif                                                                                                                                                               
-		#if RES_3303_5603                                                                                                                                                    
-		{MIN_RANGE_VALUE_5603,                   ItemOp(ItemOp::READ),    IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
-		#endif                                                                                                                                                               
-		#if RES_3303_5604                                                                                                                                                    
-		{MAX_RANGE_VALUE_5604,                   ItemOp(ItemOp::READ),    IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
-		#endif                                                                                                                                                               
-		#if RES_3303_5701                                                                                                                                                    
-		{SENSOR_UNITS_5701,                      ItemOp(ItemOp::READ),    IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::STRING },  
-		#endif                                                                                                                                                               
-		#if RES_3303_5605                                                                                                                                                    
-		{RESET_MIN_AND_MAX_MEASURED_VALUES_5605, ItemOp(ItemOp::EXECUTE), IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::EXECUTE }, 
-		#endif                                                                                                                                                               
+		{SENSOR_VALUE_5700,                      ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::MANDATORY, TYPE_ID::FLOAT },   
+		#if RES_3303_5601                                                                                                                                                               
+		{MIN_MEASURED_VALUE_5601,                ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
+		#endif                                                                                                                                                                          
+		#if RES_3303_5602                                                                                                                                                               
+		{MAX_MEASURED_VALUE_5602,                ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
+		#endif                                                                                                                                                                          
+		#if RES_3303_5603                                                                                                                                                               
+		{MIN_RANGE_VALUE_5603,                   ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
+		#endif                                                                                                                                                                          
+		#if RES_3303_5604                                                                                                                                                               
+		{MAX_RANGE_VALUE_5604,                   ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
+		#endif                                                                                                                                                                          
+		#if RES_3303_5701                                                                                                                                                               
+		{SENSOR_UNITS_5701,                      ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::STRING },  
+		#endif                                                                                                                                                                          
+		#if RES_3303_5605                                                                                                                                                               
+		{RESET_MIN_AND_MAX_MEASURED_VALUES_5605, ItemOp(ItemOp::EXECUTE),            IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::EXECUTE }, 
+		#endif                                                                                                                                                                          
+		#if RES_3303_5750                                                                                                                                                               
+		{APPLICATION_TYPE_5750,                  ItemOp(ItemOp::READ|ItemOp::WRITE), IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::STRING },  
+		#endif                                                                                                                                                                          
+		#if RES_3303_5518                                                                                                                                                               
+		{TIMESTAMP_5518,                         ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::TIME },    
+		#endif                                                                                                                                                                          
+		#if RES_3303_6050                                                                                                                                                               
+		{FRACTIONAL_TIMESTAMP_6050,              ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },   
+		#endif                                                                                                                                                                          
+		#if RES_3303_6042                                                                                                                                                               
+		{MEASUREMENT_QUALITY_INDICATOR_6042,     ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::INT },     
+		#endif                                                                                                                                                                          
+		#if RES_3303_6049                                                                                                                                                               
+		{MEASUREMENT_QUALITY_LEVEL_6049,         ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::INT },     
+		#endif                                                                                                                                                                          
 	};
 	setupResources(std::move(resources));
 }
 
 void Temperature::resourcesInit() {
 	/* --------------- Code_cpp block 7 start --------------- */
-	resource(SENSOR_VALUE_5700)->set<FLOAT_T>(0.0);
+	resource(SENSOR_VALUE_5700)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(SENSOR_VALUE_5700)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#if RES_3303_5601
-	resource(MIN_MEASURED_VALUE_5601)->set<FLOAT_T>(0.0);
+	resource(MIN_MEASURED_VALUE_5601)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MIN_MEASURED_VALUE_5601)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3303_5602
-	resource(MAX_MEASURED_VALUE_5602)->set<FLOAT_T>(0.0);
+	resource(MAX_MEASURED_VALUE_5602)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MAX_MEASURED_VALUE_5602)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3303_5603
-	resource(MIN_RANGE_VALUE_5603)->set<FLOAT_T>(0.0);
+	resource(MIN_RANGE_VALUE_5603)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MIN_RANGE_VALUE_5603)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3303_5604
-	resource(MAX_RANGE_VALUE_5604)->set<FLOAT_T>(0.0);
+	resource(MAX_RANGE_VALUE_5604)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(MAX_RANGE_VALUE_5604)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3303_5701
-	resource(SENSOR_UNITS_5701)->set<STRING_T>("C");
+	resource(SENSOR_UNITS_5701)->set<STRING_T>(""); // TODO: Set appropriate value
+	// resource(SENSOR_UNITS_5701)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3303_5605
-	resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->set<EXECUTE_T>(EXECUTE_T());
+	// resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->set<EXECUTE_T>( /* TODO: Implement execute handler */ );
+	// resource(RESET_MIN_AND_MAX_MEASURED_VALUES_5605)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3303_5750
+	resource(APPLICATION_TYPE_5750)->set<STRING_T>(""); // TODO: Set appropriate value
+	// resource(APPLICATION_TYPE_5750)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3303_5518
+	resource(TIMESTAMP_5518)->set<TIME_T>(0); // TODO: Set appropriate value
+	// resource(TIMESTAMP_5518)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3303_6050
+	resource(FRACTIONAL_TIMESTAMP_6050)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(FRACTIONAL_TIMESTAMP_6050)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3303_6042
+	resource(MEASUREMENT_QUALITY_INDICATOR_6042)->set<INT_T>(0); // TODO: Set appropriate value
+	// resource(MEASUREMENT_QUALITY_INDICATOR_6042)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3303_6049
+	resource(MEASUREMENT_QUALITY_LEVEL_6049)->set<INT_T>(0); // TODO: Set appropriate value
+	// resource(MEASUREMENT_QUALITY_LEVEL_6049)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	/* --------------- Code_cpp block 7 end --------------- */
 }

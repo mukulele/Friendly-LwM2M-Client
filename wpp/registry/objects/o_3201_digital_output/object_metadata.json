@@ -2,7 +2,7 @@
     "object_data": {
         "name": "Digital Output",
         "id": "3201",
-        "version": "1.0",
+        "version": "1.1",
         "lwm2m_version": "1.0",
         "is_mandatory": false,
         "is_multiple": true

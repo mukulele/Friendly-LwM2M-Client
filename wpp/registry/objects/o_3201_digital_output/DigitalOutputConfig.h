@@ -1,5 +1,5 @@
 /*
- * Generated on: 2024-06-23 14:34:27
+ * Generated on: 2025-11-12 12:46:08
  * Created by: Sinai RnD
  */
 
@@ -11,6 +11,8 @@
 /* --------------- Config block 0 start --------------- */
 #define RES_3201_5551 0
 #define RES_3201_5750 0
+#define RES_3201_5518 0
+#define RES_3201_6050 0
 
 /* --------------- Config block 0 end --------------- */
 

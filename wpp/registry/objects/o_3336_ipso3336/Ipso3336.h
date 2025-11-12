@@ -1,14 +1,14 @@
 /*
- * PushButton
- * Generated on: 2025-11-12 12:22:34
+ * Ipso3336
+ * Generated on: 2025-11-12 12:46:20
  * Created by: Sinai RnD
  */
 
-#ifndef WPP_O_3347_PUSH_BUTTON_H
-#define WPP_O_3347_PUSH_BUTTON_H
+#ifndef WPP_O_3336_IPSO3336_H
+#define WPP_O_3336_IPSO3336_H
 
-#include "PushButtonConfig.h"
-#include "PushButtonInfo.h"
+#include "Ipso3336Config.h"
+#include "Ipso3336Info.h"
 #include "Instance.h"
 #include "InstSubject.h"
 
@@ -23,21 +23,34 @@ class Object;
 /* --------------- Сode_h block 1 start --------------- */
 /* --------------- Сode_h block 1 end --------------- */
 
-class PushButton : public Instance {
+class Ipso3336 : public Instance {
 public:
 	enum ID: ID_T {
-		DIGITAL_INPUT_STATE_5500 = 5500,
-		#if RES_3347_5501
-		DIGITAL_INPUT_COUNTER_5501 = 5501,
+		NUMERIC_LATITUDE_6051 = 6051,
+		NUMERIC_LONGITUDE_6052 = 6052,
+		#if RES_3336_6053
+		NUMERIC_UNCERTAINTY_6053 = 6053,
 		#endif
-		#if RES_3347_5750
-		APPLICATION_TYPE_5750 = 5750,
+		#if RES_3336_5705
+		COMPASS_DIRECTION_5705 = 5705,
 		#endif
-		#if RES_3347_5518
+		#if RES_3336_5517
+		VELOCITY_5517 = 5517,
+		#endif
+		#if RES_3336_5518
 		TIMESTAMP_5518 = 5518,
 		#endif
-		#if RES_3347_6050
+		#if RES_3336_5750
+		APPLICATION_TYPE_5750 = 5750,
+		#endif
+		#if RES_3336_6050
 		FRACTIONAL_TIMESTAMP_6050 = 6050,
+		#endif
+		#if RES_3336_6042
+		MEASUREMENT_QUALITY_INDICATOR_6042 = 6042,
+		#endif
+		#if RES_3336_6049
+		MEASUREMENT_QUALITY_LEVEL_6049 = 6049,
 		#endif
 	};
 
@@ -45,8 +58,8 @@ public:
 	/* --------------- Code_h block 2 end --------------- */
 
 public:
-	PushButton(lwm2m_context_t &context, const OBJ_LINK_T &id);
-	~PushButton();
+	Ipso3336(lwm2m_context_t &context, const OBJ_LINK_T &id);
+	~Ipso3336();
 
 	/* --------------- Helpful methods --------------- */
 	/**
@@ -62,7 +75,7 @@ public:
 	 * @param instId The instance ID. If not provided, the first available instance is returned.
 	 * @return A pointer to the Instance object or NULL.
 	 */
-	static PushButton * instance(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
+	static Ipso3336 * instance(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
 
 	/**
 	 * @brief Creates an instance of the object.
@@ -70,7 +83,7 @@ public:
 	 * @param instanceID The instance ID.
 	 * @return A pointer to the created Instance object or NULL.
 	 */
-	static PushButton * createInst(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
+	static Ipso3336 * createInst(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
 
 	/**
 	 * @brief Removes an instance of the object.
@@ -120,4 +133,4 @@ private:
 
 } /* namespace wpp */
 
-#endif /* WPP_O_3347_PUSH_BUTTON_H */
+#endif /* WPP_O_3336_IPSO3336_H */

@@ -1,5 +1,5 @@
 /*
- * Generated on: 2024-06-23 14:34:27
+ * Generated on: 2025-11-12 12:46:08
  * Created by: Sinai RnD
  */
 
@@ -18,9 +18,9 @@ inline const ObjectInfo DIGITAL_OUTPUT_OBJ_INFO = {
 	/* Object ID */
 	OBJ_ID::DIGITAL_OUTPUT,
 	/* URN */
-	"urn:oma:lwm2m:ext:3201",
+	"urn:oma:lwm2m:ext:3201:1.1",
 	/* Object version */
-	{1,0},
+	{1,1},
 	/* Lwm2m version */
 	{1,0},
 	/* Is single */

@@ -1,26 +1,26 @@
 /*
- * Generated on: 2025-11-12 12:46:12
+ * Generated on: 2025-11-12 12:46:20
  * Created by: Sinai RnD
  */
 
-#ifndef WPP_TEMPERATURE_INFO_H
-#define WPP_TEMPERATURE_INFO_H
+#ifndef WPP_IPSO3336_INFO_H
+#define WPP_IPSO3336_INFO_H
 
 #include "ObjectInfo.h"
 
-#ifdef OBJ_O_3303_TEMPERATURE
+#ifdef OBJ_O_3336_IPSO3336
 
 namespace wpp {
 
-inline const ObjectInfo TEMPERATURE_OBJ_INFO = {
+inline const ObjectInfo IPSO3336_OBJ_INFO = {
 	/* Name */
-	"Temperature",
+	"IPSO3336",
 	/* Object ID */
-	OBJ_ID::TEMPERATURE,
+	OBJ_ID::IPSO3336,
 	/* URN */
-	"urn:oma:lwm2m:ext:3303:1.1",
+	"urn:oma:lwm2m:ext:3336:2.0",
 	/* Object version */
-	{1,1},
+	{2,0},
 	/* Lwm2m version */
 	{1,0},
 	/* Is single */
@@ -40,5 +40,5 @@ inline const ObjectInfo TEMPERATURE_OBJ_INFO = {
 
 } /* namespace wpp */
 
-#endif /* OBJ_O_3303_TEMPERATURE */
-#endif // WPP_TEMPERATURE_INFO_H
+#endif /* OBJ_O_3336_IPSO3336 */
+#endif // WPP_IPSO3336_INFO_H

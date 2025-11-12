@@ -1,6 +1,6 @@
 /*
  * Temperature
- * Generated on: 2024-06-27 12:56:50
+ * Generated on: 2025-11-12 12:46:12
  * Created by: Sinai RnD
  */
 
@@ -44,6 +44,21 @@ public:
 		#endif
 		#if RES_3303_5605
 		RESET_MIN_AND_MAX_MEASURED_VALUES_5605 = 5605,
+		#endif
+		#if RES_3303_5750
+		APPLICATION_TYPE_5750 = 5750,
+		#endif
+		#if RES_3303_5518
+		TIMESTAMP_5518 = 5518,
+		#endif
+		#if RES_3303_6050
+		FRACTIONAL_TIMESTAMP_6050 = 6050,
+		#endif
+		#if RES_3303_6042
+		MEASUREMENT_QUALITY_INDICATOR_6042 = 6042,
+		#endif
+		#if RES_3303_6049
+		MEASUREMENT_QUALITY_LEVEL_6049 = 6049,
 		#endif
 	};
 

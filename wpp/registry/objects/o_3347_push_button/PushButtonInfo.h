@@ -1,5 +1,5 @@
 /*
- * Generated on: 2024-06-23 17:09:01
+ * Generated on: 2025-11-12 12:22:34
  * Created by: Sinai RnD
  */
 
@@ -18,9 +18,9 @@ inline const ObjectInfo PUSH_BUTTON_OBJ_INFO = {
 	/* Object ID */
 	OBJ_ID::PUSH_BUTTON,
 	/* URN */
-	"urn:oma:lwm2m:ext:3347",
+	"urn:oma:lwm2m:ext:3347:1.1",
 	/* Object version */
-	{1,0},
+	{1,1},
 	/* Lwm2m version */
 	{1,0},
 	/* Is single */

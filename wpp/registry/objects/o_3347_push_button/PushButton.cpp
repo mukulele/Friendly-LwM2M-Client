@@ -1,6 +1,6 @@
 /*
  * PushButton
- * Generated on: 2024-06-23 17:09:01
+ * Generated on: 2025-11-12 12:22:34
  * Created by: Sinai RnD
  */
 
@@ -100,18 +100,35 @@ void PushButton::resourcesCreate() {
 		#if RES_3347_5750                                                                                                                                                  
 		{APPLICATION_TYPE_5750,      ItemOp(ItemOp::READ|ItemOp::WRITE), IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::STRING }, 
 		#endif                                                                                                                                                             
+		#if RES_3347_5518                                                                                                                                                  
+		{TIMESTAMP_5518,             ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::TIME },   
+		#endif                                                                                                                                                             
+		#if RES_3347_6050                                                                                                                                                  
+		{FRACTIONAL_TIMESTAMP_6050,  ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },  
+		#endif                                                                                                                                                             
 	};
 	setupResources(std::move(resources));
 }
 
 void PushButton::resourcesInit() {
 	/* --------------- Code_cpp block 7 start --------------- */
-	resource(DIGITAL_INPUT_STATE_5500)->set<BOOL_T>( false );
+	resource(DIGITAL_INPUT_STATE_5500)->set<BOOL_T>( /* TODO */ );
+	resource(DIGITAL_INPUT_STATE_5500)->setDataVerifier( /* TODO */ );
 	#if RES_3347_5501
-	resource(DIGITAL_INPUT_COUNTER_5501)->set<INT_T>( 0 );
+	resource(DIGITAL_INPUT_COUNTER_5501)->set<INT_T>( /* TODO */ );
+	resource(DIGITAL_INPUT_COUNTER_5501)->setDataVerifier( /* TODO */ );
 	#endif
 	#if RES_3347_5750
-	resource(APPLICATION_TYPE_5750)->set<STRING_T>( 0 );
+	resource(APPLICATION_TYPE_5750)->set<STRING_T>( /* TODO */ );
+	resource(APPLICATION_TYPE_5750)->setDataVerifier( /* TODO */ );
+	#endif
+	#if RES_3347_5518
+	resource(TIMESTAMP_5518)->set<TIME_T>( /* TODO */ );
+	resource(TIMESTAMP_5518)->setDataVerifier( /* TODO */ );
+	#endif
+	#if RES_3347_6050
+	resource(FRACTIONAL_TIMESTAMP_6050)->set<FLOAT_T>( /* TODO */ );
+	resource(FRACTIONAL_TIMESTAMP_6050)->setDataVerifier( /* TODO */ );
 	#endif
 	/* --------------- Code_cpp block 7 end --------------- */
 }
