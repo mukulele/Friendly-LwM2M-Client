@@ -1,6 +1,6 @@
 /*
  * DigitalOutput
- * Generated on: 2024-06-23 14:34:27
+ * Generated on: 2025-11-12 12:46:08
  * Created by: Sinai RnD
  */
 
@@ -32,6 +32,12 @@ public:
 		#endif
 		#if RES_3201_5750
 		APPLICATION_TYPE_5750 = 5750,
+		#endif
+		#if RES_3201_5518
+		TIMESTAMP_5518 = 5518,
+		#endif
+		#if RES_3201_6050
+		FRACTIONAL_TIMESTAMP_6050 = 6050,
 		#endif
 	};
 

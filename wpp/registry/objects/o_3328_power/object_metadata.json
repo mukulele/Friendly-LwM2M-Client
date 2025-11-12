@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Power",
+        "id": "3328",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "Power",
+        "camelcase": "power",
+        "define": "OBJ_O_3328_POWER",
+        "up_underline": "POWER"
+    },
+    "object_files": {
+        "impl_h": "Power.h",
+        "impl_cpp": "Power.cpp",
+        "config": "PowerConfig.h",
+        "info": "PowerInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

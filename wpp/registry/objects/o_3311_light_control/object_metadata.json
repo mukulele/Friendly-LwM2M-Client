@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Light Control",
+        "id": "3311",
+        "version": "1.0",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "LightControl",
+        "camelcase": "lightControl",
+        "define": "OBJ_O_3311_LIGHT_CONTROL",
+        "up_underline": "LIGHT_CONTROL"
+    },
+    "object_files": {
+        "impl_h": "LightControl.h",
+        "impl_cpp": "LightControl.cpp",
+        "config": "LightControlConfig.h",
+        "info": "LightControlInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

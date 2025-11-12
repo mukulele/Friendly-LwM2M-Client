@@ -1,5 +1,5 @@
 /*
- * Generated on: 2024-06-27 12:56:50
+ * Generated on: 2025-11-12 12:46:12
  * Created by: Sinai RnD
  */
 
@@ -18,9 +18,9 @@ inline const ObjectInfo TEMPERATURE_OBJ_INFO = {
 	/* Object ID */
 	OBJ_ID::TEMPERATURE,
 	/* URN */
-	"urn:oma:lwm2m:ext:3303",
+	"urn:oma:lwm2m:ext:3303:1.1",
 	/* Object version */
-	{1,0},
+	{1,1},
 	/* Lwm2m version */
 	{1,0},
 	/* Is single */

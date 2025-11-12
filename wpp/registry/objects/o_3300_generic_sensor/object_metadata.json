@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Generic Sensor",
+        "id": "3300",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "GenericSensor",
+        "camelcase": "genericSensor",
+        "define": "OBJ_O_3300_GENERIC_SENSOR",
+        "up_underline": "GENERIC_SENSOR"
+    },
+    "object_files": {
+        "impl_h": "GenericSensor.h",
+        "impl_cpp": "GenericSensor.cpp",
+        "config": "GenericSensorConfig.h",
+        "info": "GenericSensorInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

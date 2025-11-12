@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LwM2M Client Control Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .control-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .control-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-start {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-start:hover {
+            background-color: #219a52;
+        }
+        .btn-stop {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .btn-stop:hover {
+            background-color: #c0392b;
+        }
+        .btn-register {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-register:hover {
+            background-color: #2980b9;
+        }
+        .btn-deregister {
+            background-color: #f39c12;
+            color: white;
+        }
+        .btn-deregister:hover {
+            background-color: #e67e22;
+        }
+        .btn-restart {
+            background-color: #9b59b6;
+            color: white;
+        }
+        .btn-restart:hover {
+            background-color: #8e44ad;
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-stopped { background-color: #95a5a6; }
+        .status-starting { background-color: #f39c12; }
+        .status-running { background-color: #3498db; }
+        .status-registered { background-color: #27ae60; }
+        .status-stopping { background-color: #e67e22; }
+        .status-error { background-color: #e74c3c; }
+        .log-container {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            height: 200px;
+            overflow-y: auto;
+            margin: 15px 0;
+        }
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .config-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #3498db;
+        }
+        .config-label {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .config-value {
+            font-size: 14px;
+            color: #34495e;
+            margin-top: 4px;
+        }
+        .disabled {
+            opacity: 0.6;
+            cursor: not-allowed !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 LwM2M Client Control Dashboard</h1>
+            <div>
+                <span id="connection-status" class="status-indicator status-stopped"></span>
+                <span id="status-text">Initializing...</span>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <h2>Client Control</h2>
+            <div class="button-grid">
+                <button id="btn-start" class="control-btn btn-start">
+                    ▶️ Start Client
+                </button>
+                <button id="btn-stop" class="control-btn btn-stop">
+                    ⏹️ Stop Client
+                </button>
+                <button id="btn-register" class="control-btn btn-register">
+                    📥 Register
+                </button>
+                <button id="btn-deregister" class="control-btn btn-deregister">
+                    📤 Deregister
+                </button>
+                <button id="btn-restart" class="control-btn btn-restart">
+                    🔄 Restart
+                </button>
+                <button id="btn-refresh" class="control-btn btn-register">
+                    🔄 Refresh Status
+                </button>
+            </div>
+        </div>
+
+        <div class="status-card">
+            <h3>Client Status</h3>
+            <div class="config-grid">
+                <div class="config-item">
+                    <div class="config-label">State</div>
+                    <div class="config-value" id="client-state">Unknown</div>
+                </div>
+                <div class="config-item">
+                    <div class="config-label">Process ID</div>
+                    <div class="config-value" id="client-pid">N/A</div>
+                </div>
+                <div class="config-item">
+                    <div class="config-label">Uptime</div>
+                    <div class="config-value" id="client-uptime">N/A</div>
+                </div>
+                <div class="config-item">
+                    <div class="config-label">Server</div>
+                    <div class="config-value" id="server-info">N/A</div>
+                </div>
+                <div class="config-item">
+                    <div class="config-label">Endpoint</div>
+                    <div class="config-value" id="endpoint-name">N/A</div>
+                </div>
+                <div class="config-item">
+                    <div class="config-label">Last Update</div>
+                    <div class="config-value" id="last-update">N/A</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-card">
+            <h3>Live Output</h3>
+            <div id="log-container" class="log-container">
+                Waiting for client output...
+            </div>
+            <button onclick="clearLogs()" class="control-btn btn-register" style="width: auto;">
+                🗑️ Clear Logs
+            </button>
+        </div>
+
+        <div class="status-card">
+            <h3>Connection Configuration</h3>
+            <div id="connection-config" class="config-grid">
+                Loading configuration...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let ws;
+        let clientState = 'unknown';
+
+        // Initialize WebSocket connection for real-time updates
+        function connectWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}`;
+            
+            ws = new WebSocket(wsUrl);
+            
+            ws.onopen = function() {
+                document.getElementById('connection-status').className = 'status-indicator status-running';
+                document.getElementById('status-text').textContent = 'Bridge Connected';
+                console.log('WebSocket connected');
+                loadInitialStatus();
+            };
+            
+            ws.onclose = function() {
+                document.getElementById('connection-status').className = 'status-indicator status-error';
+                document.getElementById('status-text').textContent = 'Bridge Disconnected';
+                console.log('WebSocket disconnected');
+                
+                // Retry connection after 3 seconds
+                setTimeout(connectWebSocket, 3000);
+            };
+            
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                handleWebSocketMessage(data);
+            };
+        }
+
+        // Handle WebSocket messages
+        function handleWebSocketMessage(data) {
+            switch(data.type) {
+                case 'client_status':
+                    handleClientStatus(data);
+                    break;
+                case 'client_control_response':
+                    handleControlResponse(data);
+                    break;
+            }
+        }
+
+        // Handle client status updates
+        function handleClientStatus(data) {
+            if (data.event === 'output') {
+                addLogMessage(`[${new Date().toLocaleTimeString()}] ${data.message}`);
+            } else {
+                addLogMessage(`[${new Date().toLocaleTimeString()}] [${data.event.toUpperCase()}] ${data.message}`);
+                updateClientState(data.state);
+            }
+        }
+
+        // Handle control command responses
+        function handleControlResponse(data) {
+            const message = data.result.success ? 
+                `✅ ${data.command}: ${data.result.message}` : 
+                `❌ ${data.command}: ${data.result.error}`;
+            addLogMessage(`[${new Date().toLocaleTimeString()}] ${message}`);
+            
+            if (data.result.success) {
+                setTimeout(refreshStatus, 1000);
+            }
+        }
+
+        // Add message to log
+        function addLogMessage(message) {
+            const logContainer = document.getElementById('log-container');
+            logContainer.innerHTML += message + '\n';
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        // Clear logs
+        function clearLogs() {
+            document.getElementById('log-container').innerHTML = '';
+        }
+
+        // Update client state indicator and buttons
+        function updateClientState(state) {
+            clientState = state;
+            
+            const stateElement = document.getElementById('client-state');
+            const statusIndicator = document.getElementById('connection-status');
+            
+            stateElement.textContent = state.charAt(0).toUpperCase() + state.slice(1);
+            statusIndicator.className = `status-indicator status-${state}`;
+            
+            // Update button states
+            updateButtonStates(state);
+        }
+
+        // Update button enabled/disabled states
+        function updateButtonStates(state) {
+            const buttons = {
+                'btn-start': ['stopped', 'error'],
+                'btn-stop': ['running', 'registered', 'starting'],
+                'btn-register': ['running'],
+                'btn-deregister': ['registered'],
+                'btn-restart': ['running', 'registered', 'stopped', 'error']
+            };
+
+            Object.entries(buttons).forEach(([btnId, enabledStates]) => {
+                const button = document.getElementById(btnId);
+                if (enabledStates.includes(state)) {
+                    button.classList.remove('disabled');
+                    button.disabled = false;
+                } else {
+                    button.classList.add('disabled');
+                    button.disabled = true;
+                }
+            });
+        }
+
+        // API call helper
+        async function apiCall(endpoint, method = 'GET', data = null) {
+            try {
+                const config = {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                if (data) {
+                    config.body = JSON.stringify(data);
+                }
+
+                const response = await fetch(endpoint, config);
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.error || 'API call failed');
+                }
+                
+                return result;
+            } catch (error) {
+                addLogMessage(`[${new Date().toLocaleTimeString()}] ❌ API Error: ${error.message}`);
+                throw error;
+            }
+        }
+
+        // Control functions
+        async function startClient() {
+            addLogMessage(`[${new Date().toLocaleTimeString()}] 🚀 Starting client...`);
+            await apiCall('/api/client/start', 'POST');
+        }
+
+        async function stopClient() {
+            addLogMessage(`[${new Date().toLocaleTimeString()}] ⏹️ Stopping client...`);
+            await apiCall('/api/client/stop', 'POST');
+        }
+
+        async function registerClient() {
+            addLogMessage(`[${new Date().toLocaleTimeString()}] 📥 Registering client...`);
+            await apiCall('/api/client/register', 'POST');
+        }
+
+        async function deregisterClient() {
+            addLogMessage(`[${new Date().toLocaleTimeString()}] 📤 Deregistering client...`);
+            await apiCall('/api/client/deregister', 'POST');
+        }
+
+        async function restartClient() {
+            addLogMessage(`[${new Date().toLocaleTimeString()}] 🔄 Restarting client...`);
+            await apiCall('/api/client/restart', 'POST');
+        }
+
+        // Load initial status
+        async function loadInitialStatus() {
+            try {
+                await refreshStatus();
+                await loadConnectionConfig();
+            } catch (error) {
+                console.error('Error loading initial status:', error);
+            }
+        }
+
+        // Refresh status
+        async function refreshStatus() {
+            try {
+                const status = await apiCall('/api/client/status');
+                
+                updateClientState(status.state);
+                document.getElementById('client-pid').textContent = status.pid || 'N/A';
+                document.getElementById('client-uptime').textContent = formatUptime(status.uptime);
+                document.getElementById('server-info').textContent = 
+                    `${status.connection.serverHost}:${status.connection.serverPort}`;
+                document.getElementById('endpoint-name').textContent = status.connection.endpoint;
+                document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+                
+            } catch (error) {
+                console.error('Error refreshing status:', error);
+            }
+        }
+
+        // Load connection configuration
+        async function loadConnectionConfig() {
+            try {
+                const config = await apiCall('/api/connection');
+                
+                const configHtml = `
+                    <div class="config-item">
+                        <div class="config-label">Server Host</div>
+                        <div class="config-value">${config.connection.serverHost}</div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-label">Server Port</div>
+                        <div class="config-value">${config.connection.serverPort}</div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-label">Listen Port</div>
+                        <div class="config-value">${config.connection.listenPort}</div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-label">Protocol</div>
+                        <div class="config-value">IPv${config.connection.useIPv4 ? '4' : '6'}</div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-label">DTLS</div>
+                        <div class="config-value">${config.connection.dtlsConfig.enableDTLS ? 'Enabled' : 'Disabled'}</div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-label">Lifetime</div>
+                        <div class="config-value">${config.client.lifetime}s</div>
+                    </div>
+                `;
+                
+                document.getElementById('connection-config').innerHTML = configHtml;
+                
+            } catch (error) {
+                console.error('Error loading connection config:', error);
+            }
+        }
+
+        // Format uptime
+        function formatUptime(uptime) {
+            if (!uptime || uptime === 0) return 'N/A';
+            
+            const seconds = Math.floor(uptime / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            
+            if (hours > 0) {
+                return `${hours}h ${minutes % 60}m ${seconds % 60}s`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${seconds % 60}s`;
+            } else {
+                return `${seconds}s`;
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup button event listeners
+            document.getElementById('btn-start').addEventListener('click', startClient);
+            document.getElementById('btn-stop').addEventListener('click', stopClient);
+            document.getElementById('btn-register').addEventListener('click', registerClient);
+            document.getElementById('btn-deregister').addEventListener('click', deregisterClient);
+            document.getElementById('btn-restart').addEventListener('click', restartClient);
+            document.getElementById('btn-refresh').addEventListener('click', refreshStatus);
+            
+            // Connect WebSocket
+            connectWebSocket();
+            
+            // Auto-refresh status every 30 seconds
+            setInterval(refreshStatus, 30000);
+        });
+    </script>
+</body>
+</html>

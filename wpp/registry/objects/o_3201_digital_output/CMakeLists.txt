@@ -1,4 +1,4 @@
-# Generated on: 2024-06-23 14:34:27
+# Generated on: 2025-11-12 12:46:08
 # Created by: Sinai RnD
 
 wpp_check_definition("OBJ_O_3201_DIGITAL_OUTPUT" is_defined)

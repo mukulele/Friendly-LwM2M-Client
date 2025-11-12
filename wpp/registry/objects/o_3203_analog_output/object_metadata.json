@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Analog Output",
+        "id": "3203",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "AnalogOutput",
+        "camelcase": "analogOutput",
+        "define": "OBJ_O_3203_ANALOG_OUTPUT",
+        "up_underline": "ANALOG_OUTPUT"
+    },
+    "object_files": {
+        "impl_h": "AnalogOutput.h",
+        "impl_cpp": "AnalogOutput.cpp",
+        "config": "AnalogOutputConfig.h",
+        "info": "AnalogOutputInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

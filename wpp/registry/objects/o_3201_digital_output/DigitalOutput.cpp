@@ -1,6 +1,6 @@
 /*
  * DigitalOutput
- * Generated on: 2024-06-23 14:34:27
+ * Generated on: 2025-11-12 12:46:08
  * Created by: Sinai RnD
  */
 
@@ -100,18 +100,35 @@ void DigitalOutput::resourcesCreate() {
 		#if RES_3201_5750                                                                                                                                                    
 		{APPLICATION_TYPE_5750,        ItemOp(ItemOp::READ|ItemOp::WRITE), IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::STRING }, 
 		#endif                                                                                                                                                               
+		#if RES_3201_5518                                                                                                                                                    
+		{TIMESTAMP_5518,               ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::TIME },   
+		#endif                                                                                                                                                               
+		#if RES_3201_6050                                                                                                                                                    
+		{FRACTIONAL_TIMESTAMP_6050,    ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::OPTIONAL,  TYPE_ID::FLOAT },  
+		#endif                                                                                                                                                               
 	};
 	setupResources(std::move(resources));
 }
 
 void DigitalOutput::resourcesInit() {
 	/* --------------- Code_cpp block 7 start --------------- */
-	resource(DIGITAL_OUTPUT_STATE_5550)->set<BOOL_T>( 0 );
+	resource(DIGITAL_OUTPUT_STATE_5550)->set<BOOL_T>(false); // TODO: Set appropriate value
+	// resource(DIGITAL_OUTPUT_STATE_5550)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#if RES_3201_5551
-	resource(DIGITAL_OUTPUT_POLARITY_5551)->set<BOOL_T>( 0 );
+	resource(DIGITAL_OUTPUT_POLARITY_5551)->set<BOOL_T>(false); // TODO: Set appropriate value
+	// resource(DIGITAL_OUTPUT_POLARITY_5551)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	#if RES_3201_5750
-	resource(APPLICATION_TYPE_5750)->set<STRING_T>( "" );
+	resource(APPLICATION_TYPE_5750)->set<STRING_T>(""); // TODO: Set appropriate value
+	// resource(APPLICATION_TYPE_5750)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3201_5518
+	resource(TIMESTAMP_5518)->set<TIME_T>(0); // TODO: Set appropriate value
+	// resource(TIMESTAMP_5518)->setDataVerifier( /* TODO: Add data verifier if needed */ );
+	#endif
+	#if RES_3201_6050
+	resource(FRACTIONAL_TIMESTAMP_6050)->set<FLOAT_T>(0.0f); // TODO: Set appropriate value
+	// resource(FRACTIONAL_TIMESTAMP_6050)->setDataVerifier( /* TODO: Add data verifier if needed */ );
 	#endif
 	/* --------------- Code_cpp block 7 end --------------- */
 }
