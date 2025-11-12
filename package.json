@@ -1,0 +1,56 @@
+{
+  "name": "friendly-lwm2m-bridge",
+  "version": "1.0.0",
+  "description": "TypeScript Node.js bridge for Friendly LwM2M Client with SignalK integration and comprehensive JSON configuration",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon --watch dist --delay 2 dist/index.js\"",
+    "cli": "npm run build && node dist/lwm2m-cli.js",
+    "test": "npm run build && npm run test:types",
+    "test:types": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "postbuild": "echo '✅ TypeScript build complete'",
+    "start:signalk": "npm run build && node -e \"const { LwM2MBridge } = require('./dist/lwm2m-bridge'); const bridge = new LwM2MBridge('./signalk_lwm2m_config.json', 3000); bridge.start();\"",
+    "legacy:start": "node legacy/lwm2m_bridge.js",
+    "legacy:cli": "node legacy/lwm2m-cli.js",
+    "legacy:dev": "nodemon legacy/lwm2m_bridge.js"
+  },
+  "bin": {
+    "lwm2m-cli": "./dist/lwm2m-cli.js"
+  },
+  "keywords": [
+    "lwm2m",
+    "iot",
+    "coap",
+    "device-management",
+    "typescript",
+    "signalk",
+    "marine-electronics",
+    "websocket",
+    "rest-api"
+  ],
+  "author": "Friendly Technologies",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2",
+    "axios": "^1.6.0",
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0",
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.10",
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

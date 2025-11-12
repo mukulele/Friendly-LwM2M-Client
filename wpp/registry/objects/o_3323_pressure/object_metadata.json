@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Pressure",
+        "id": "3323",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "Pressure",
+        "camelcase": "pressure",
+        "define": "OBJ_O_3323_PRESSURE",
+        "up_underline": "PRESSURE"
+    },
+    "object_files": {
+        "impl_h": "Pressure.h",
+        "impl_cpp": "Pressure.cpp",
+        "config": "PressureConfig.h",
+        "info": "PressureInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

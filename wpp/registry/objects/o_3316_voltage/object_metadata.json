@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Voltage",
+        "id": "3316",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "Voltage",
+        "camelcase": "voltage",
+        "define": "OBJ_O_3316_VOLTAGE",
+        "up_underline": "VOLTAGE"
+    },
+    "object_files": {
+        "impl_h": "Voltage.h",
+        "impl_cpp": "Voltage.cpp",
+        "config": "VoltageConfig.h",
+        "info": "VoltageInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LwM2M Resource Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .object-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .object-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .resource-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .resource-name {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        .resource-value {
+            font-size: 1.2em;
+            color: #27ae60;
+            margin: 10px 0;
+        }
+        .resource-meta {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .writable {
+            border-left: 4px solid #3498db;
+        }
+        .readable {
+            border-left: 4px solid #27ae60;
+        }
+        .error {
+            color: #e74c3c;
+            font-style: italic;
+        }
+        .update-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .update-btn:hover {
+            background-color: #2980b9;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .status-connected {
+            background-color: #27ae60;
+        }
+        .status-disconnected {
+            background-color: #e74c3c;
+        }
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LwM2M Resource Dashboard</h1>
+            <div>
+                <span id="connection-status" class="status-indicator status-disconnected"></span>
+                <span id="status-text">Disconnected</span>
+                <button onclick="location.reload()">Refresh</button>
+            </div>
+        </div>
+
+        <div id="objects-container">
+            Loading objects...
+        </div>
+    </div>
+
+    <script>
+        let ws;
+        let currentData = {};
+
+        // Initialize WebSocket connection
+        function connectWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}`;
+            
+            ws = new WebSocket(wsUrl);
+            
+            ws.onopen = function() {
+                document.getElementById('connection-status').className = 'status-indicator status-connected';
+                document.getElementById('status-text').textContent = 'Connected';
+                console.log('WebSocket connected');
+            };
+            
+            ws.onclose = function() {
+                document.getElementById('connection-status').className = 'status-indicator status-disconnected';
+                document.getElementById('status-text').textContent = 'Disconnected';
+                console.log('WebSocket disconnected');
+                
+                // Retry connection after 3 seconds
+                setTimeout(connectWebSocket, 3000);
+            };
+            
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                handleWebSocketMessage(data);
+            };
+        }
+
+        // Handle WebSocket messages
+        function handleWebSocketMessage(data) {
+            switch(data.type) {
+                case 'resource_update':
+                    updateResourceValue(data.objectId, data.instanceId, data.resourceId, data.value);
+                    break;
+                case 'resource_value':
+                    updateResourceValue(data.objectId, data.instanceId, data.resourceId, data.value);
+                    break;
+            }
+        }
+
+        // Update resource value in the UI
+        function updateResourceValue(objectId, instanceId, resourceId, value) {
+            const elementId = `resource-${objectId}-${instanceId}-${resourceId}`;
+            const valueElement = document.getElementById(elementId);
+            if (valueElement) {
+                valueElement.textContent = value;
+                valueElement.style.color = '#27ae60';
+            }
+        }
+
+        // Load and display objects
+        async function loadObjects() {
+            try {
+                const response = await fetch('/api/config');
+                const config = await response.json();
+                currentData = config;
+                
+                renderObjects(config.objects);
+            } catch (error) {
+                console.error('Error loading objects:', error);
+                document.getElementById('objects-container').innerHTML = 
+                    '<div class="error">Error loading configuration</div>';
+            }
+        }
+
+        // Render objects in the UI
+        function renderObjects(objects) {
+            const container = document.getElementById('objects-container');
+            container.innerHTML = '';
+            
+            for (const [objectId, objectConfig] of Object.entries(objects)) {
+                const objectCard = createObjectCard(objectId, objectConfig);
+                container.appendChild(objectCard);
+                
+                // Load resource values for each instance
+                loadResourceValues(objectId, objectConfig);
+            }
+        }
+
+        // Create object card HTML
+        function createObjectCard(objectId, objectConfig) {
+            const card = document.createElement('div');
+            card.className = 'object-card';
+            
+            let html = `<div class="object-title">Object ${objectId}: ${objectConfig.name}</div>`;
+            
+            for (const [instanceId, instanceConfig] of Object.entries(objectConfig.instances)) {
+                html += `<h4>Instance ${instanceId}</h4>`;
+                html += `<div class="resource-grid">`;
+                
+                for (const [resourceId, resourceConfig] of Object.entries(instanceConfig.resources)) {
+                    const accessClass = resourceConfig.access.includes('W') ? 'writable' : 'readable';
+                    
+                    html += `
+                        <div class="resource-item ${accessClass}">
+                            <div class="resource-name">${resourceConfig.name} (${resourceId})</div>
+                            <div class="resource-value" id="resource-${objectId}-${instanceId}-${resourceId}">Loading...</div>
+                            <div class="resource-meta">
+                                Type: ${resourceConfig.type} | Access: ${resourceConfig.access}
+                                ${resourceConfig.unit ? ` | Unit: ${resourceConfig.unit}` : ''}
+                            </div>
+                            ${resourceConfig.access.includes('W') ? `
+                                <input type="text" class="input-field" id="input-${objectId}-${instanceId}-${resourceId}" 
+                                       placeholder="New value">
+                                <button class="update-btn" onclick="updateResource('${objectId}', '${instanceId}', '${resourceId}')">
+                                    Update
+                                </button>
+                            ` : ''}
+                            <button class="update-btn" onclick="refreshResource('${objectId}', '${instanceId}', '${resourceId}')">
+                                Refresh
+                            </button>
+                        </div>
+                    `;
+                }
+                
+                html += `</div>`;
+            }
+            
+            card.innerHTML = html;
+            return card;
+        }
+
+        // Load resource values for an object
+        async function loadResourceValues(objectId, objectConfig) {
+            for (const [instanceId, instanceConfig] of Object.entries(objectConfig.instances)) {
+                try {
+                    const response = await fetch(`/api/objects/${objectId}/instances/${instanceId}`);
+                    const data = await response.json();
+                    
+                    for (const [resourceId, resourceData] of Object.entries(data.resources)) {
+                        const elementId = `resource-${objectId}-${instanceId}-${resourceId}`;
+                        const valueElement = document.getElementById(elementId);
+                        if (valueElement) {
+                            if (resourceData.error) {
+                                valueElement.textContent = `Error: ${resourceData.error}`;
+                                valueElement.className = 'resource-value error';
+                            } else {
+                                valueElement.textContent = resourceData.value;
+                                valueElement.className = 'resource-value';
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error(`Error loading resources for object ${objectId}/${instanceId}:`, error);
+                }
+            }
+        }
+
+        // Update a resource value
+        async function updateResource(objectId, instanceId, resourceId) {
+            const inputElement = document.getElementById(`input-${objectId}-${instanceId}-${resourceId}`);
+            const value = inputElement.value;
+            
+            if (!value) {
+                alert('Please enter a value');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/objects/${objectId}/instances/${instanceId}/resources/${resourceId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ value })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    updateResourceValue(objectId, instanceId, resourceId, result.value);
+                    inputElement.value = '';
+                    alert('Resource updated successfully');
+                } else {
+                    alert(`Error: ${result.error}`);
+                }
+            } catch (error) {
+                alert(`Error updating resource: ${error.message}`);
+            }
+        }
+
+        // Refresh a single resource
+        async function refreshResource(objectId, instanceId, resourceId) {
+            try {
+                const response = await fetch(`/api/objects/${objectId}/instances/${instanceId}/resources/${resourceId}/update`, {
+                    method: 'POST'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    updateResourceValue(objectId, instanceId, resourceId, result.value);
+                } else {
+                    alert(`Error: ${result.error}`);
+                }
+            } catch (error) {
+                alert(`Error refreshing resource: ${error.message}`);
+            }
+        }
+
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            connectWebSocket();
+            loadObjects();
+            
+            // Refresh data every 30 seconds
+            setInterval(loadObjects, 30000);
+        });
+    </script>
+</body>
+</html>
