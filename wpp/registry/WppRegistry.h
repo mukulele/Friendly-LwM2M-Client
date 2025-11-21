@@ -48,6 +48,42 @@
 #ifdef OBJ_O_3313_ACCELEROMETER
 #include "o_3313_accelerometer/Accelerometer.h"
 #endif
+#ifdef OBJ_O_6_LOCATION
+#include "o_6_location/Location.h"
+#endif
+#ifdef OBJ_O_3202_ANALOG_INPUT
+#include "o_3202_analog_input/AnalogInput.h"
+#endif
+#ifdef OBJ_O_3203_ANALOG_OUTPUT
+#include "o_3203_analog_output/AnalogOutput.h"
+#endif
+#ifdef OBJ_O_3300_GENERIC_SENSOR
+#include "o_3300_generic_sensor/GenericSensor.h"
+#endif
+#ifdef OBJ_O_3311_LIGHT_CONTROL
+#include "o_3311_light_control/LightControl.h"
+#endif
+#ifdef OBJ_O_3316_VOLTAGE
+#include "o_3316_voltage/Voltage.h"
+#endif
+#ifdef OBJ_O_3317_CURRENT
+#include "o_3317_current/Current.h"
+#endif
+#ifdef OBJ_O_3322_LOAD
+#include "o_3322_load/Load.h"
+#endif
+#ifdef OBJ_O_3323_PRESSURE
+#include "o_3323_pressure/Pressure.h"
+#endif
+#ifdef OBJ_O_3328_POWER
+#include "o_3328_power/Power.h"
+#endif
+#ifdef OBJ_O_3336_LOCATION
+#include "o_3336_location/Location.h"
+#endif
+#ifdef OBJ_O_3342_ON_OFF_SWITCH
+#include "o_3342_on_off_switch/On_offSwitch.h"
+#endif
 /* ---------- Optional objects include block end ---------- */
 
 namespace wpp {
@@ -155,6 +191,42 @@ public:
 	#endif
 	#ifdef OBJ_O_3313_ACCELEROMETER
 	Object & accelerometer();
+	#endif
+	#ifdef OBJ_O_6_LOCATION
+	Object & location();
+	#endif
+	#ifdef OBJ_O_3202_ANALOG_INPUT
+	Object & analogInput();
+	#endif
+	#ifdef OBJ_O_3203_ANALOG_OUTPUT
+	Object & analogOutput();
+	#endif
+	#ifdef OBJ_O_3300_GENERIC_SENSOR
+	Object & genericSensor();
+	#endif
+	#ifdef OBJ_O_3311_LIGHT_CONTROL
+	Object & lightControl();
+	#endif
+	#ifdef OBJ_O_3316_VOLTAGE
+	Object & voltage();
+	#endif
+	#ifdef OBJ_O_3317_CURRENT
+	Object & current();
+	#endif
+	#ifdef OBJ_O_3322_LOAD
+	Object & load();
+	#endif
+	#ifdef OBJ_O_3323_PRESSURE
+	Object & pressure();
+	#endif
+	#ifdef OBJ_O_3328_POWER
+	Object & power();
+	#endif
+	#ifdef OBJ_O_3336_LOCATION
+	Object & location();
+	#endif
+	#ifdef OBJ_O_3342_ON_OFF_SWITCH
+	Object & on_offSwitch();
 	#endif
 	/* ---------- Optional objects prototype block end ---------- */
 

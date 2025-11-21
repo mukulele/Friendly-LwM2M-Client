@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "on_off switch",
+        "id": "3342",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "On_offSwitch",
+        "camelcase": "on_offSwitch",
+        "define": "OBJ_O_3342_ON_OFF_SWITCH",
+        "up_underline": "ON_OFF_SWITCH"
+    },
+    "object_files": {
+        "impl_h": "On_offSwitch.h",
+        "impl_cpp": "On_offSwitch.cpp",
+        "config": "On_offSwitchConfig.h",
+        "info": "On_offSwitchInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

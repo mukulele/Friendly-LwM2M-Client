@@ -29,7 +29,7 @@ set(WPP_DEFINITIONS ${WPP_DEFINITIONS} LWM2M_CLIENT_MODE)
 set(WPP_DEFINITIONS ${WPP_DEFINITIONS} LWM2M_COAP_DEFAULT_BLOCK_SIZE=1024)
 
 # Enable LWM2M Bootstrap support in a LWM2M Client
-# set(WPP_DEFINITIONS ${WPP_DEFINITIONS} LWM2M_BOOTSTRAP)
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} LWM2M_BOOTSTRAP)
 
 # Enable CBOR payload support
 set(WPP_DEFINITIONS ${WPP_DEFINITIONS} LWM2M_SUPPORT_CBOR)
@@ -108,6 +108,30 @@ set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3347_PUSH_BUTTON)
 set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3303_TEMPERATURE)
 # Include optional Accelerometer object in the build"
 set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3313_ACCELEROMETER)
+# Include optional Location object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_6_LOCATION)
+# Include optional AnalogInput object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3202_ANALOG_INPUT)
+# Include optional AnalogOutput object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3203_ANALOG_OUTPUT)
+# Include optional GenericSensor object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3300_GENERIC_SENSOR)
+# Include optional LightControl object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3311_LIGHT_CONTROL)
+# Include optional Voltage object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3316_VOLTAGE)
+# Include optional Current object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3317_CURRENT)
+# Include optional Load object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3322_LOAD)
+# Include optional Pressure object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3323_PRESSURE)
+# Include optional Power object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3328_POWER)
+# Include optional Location object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3336_LOCATION)
+# Include optional On_offSwitch object in the build"
+set(WPP_DEFINITIONS ${WPP_DEFINITIONS} OBJ_O_3342_ON_OFF_SWITCH)
 # ---------- Optional objects config block end ----------
 
 

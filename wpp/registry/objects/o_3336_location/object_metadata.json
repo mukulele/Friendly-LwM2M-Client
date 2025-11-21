@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Location",
+        "id": "3336",
+        "version": "2.0",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "Location",
+        "camelcase": "location",
+        "define": "OBJ_O_3336_LOCATION",
+        "up_underline": "LOCATION"
+    },
+    "object_files": {
+        "impl_h": "Location.h",
+        "impl_cpp": "Location.cpp",
+        "config": "LocationConfig.h",
+        "info": "LocationInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

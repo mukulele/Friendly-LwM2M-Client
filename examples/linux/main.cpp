@@ -4,6 +4,8 @@
 
 #include "Connection.h"
 #include "objects.h"
+#include "WppClient.h"
+#include "WppRegistry.h"
 
 using namespace std;
 using namespace wpp;
@@ -52,7 +54,9 @@ int main() {
 	#endif
 	cout << "WppClient name: " << clientName << endl;
 	WppClient::create({clientName, "", ""}, connection, wppErrorHandler);
+	if (WppClient::isCreated() == false) return -1;
 	WppClient *client = WppClient::takeOwnershipBlocking();
+	WppRegistry &registry = client->registry();
 
 	// Initialize wpp objects
 	#ifdef OBJ_O_2_LWM2M_ACCESS_CONTROL

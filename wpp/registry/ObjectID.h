@@ -49,6 +49,42 @@ enum OBJ_ID: ID_T {
 	#ifdef OBJ_O_3313_ACCELEROMETER
 	ACCELEROMETER = 3313,
 	#endif
+	#ifdef OBJ_O_6_LOCATION
+	LOCATION = 6,
+	#endif
+	#ifdef OBJ_O_3202_ANALOG_INPUT
+	ANALOG_INPUT = 3202,
+	#endif
+	#ifdef OBJ_O_3203_ANALOG_OUTPUT
+	ANALOG_OUTPUT = 3203,
+	#endif
+	#ifdef OBJ_O_3300_GENERIC_SENSOR
+	GENERIC_SENSOR = 3300,
+	#endif
+	#ifdef OBJ_O_3311_LIGHT_CONTROL
+	LIGHT_CONTROL = 3311,
+	#endif
+	#ifdef OBJ_O_3316_VOLTAGE
+	VOLTAGE = 3316,
+	#endif
+	#ifdef OBJ_O_3317_CURRENT
+	CURRENT = 3317,
+	#endif
+	#ifdef OBJ_O_3322_LOAD
+	LOAD = 3322,
+	#endif
+	#ifdef OBJ_O_3323_PRESSURE
+	PRESSURE = 3323,
+	#endif
+	#ifdef OBJ_O_3328_POWER
+	POWER = 3328,
+	#endif
+	#ifdef OBJ_O_3336_LOCATION
+	LOCATION = 3336,
+	#endif
+	#ifdef OBJ_O_3342_ON_OFF_SWITCH
+	ON_OFF_SWITCH = 3342,
+	#endif
 	/* ---------- Optional objects ID block end ---------- */
 
 	MAX_ID = ID_T_MAX_VAL,

@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Load",
+        "id": "3322",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "Load",
+        "camelcase": "load",
+        "define": "OBJ_O_3322_LOAD",
+        "up_underline": "LOAD"
+    },
+    "object_files": {
+        "impl_h": "Load.h",
+        "impl_cpp": "Load.cpp",
+        "config": "LoadConfig.h",
+        "info": "LoadInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "object_data": {
+        "name": "Current",
+        "id": "3317",
+        "version": "1.1",
+        "lwm2m_version": "1.0",
+        "is_mandatory": false,
+        "is_multiple": true
+    },
+    "object_names": {
+        "class": "Current",
+        "camelcase": "current",
+        "define": "OBJ_O_3317_CURRENT",
+        "up_underline": "CURRENT"
+    },
+    "object_files": {
+        "impl_h": "Current.h",
+        "impl_cpp": "Current.cpp",
+        "config": "CurrentConfig.h",
+        "info": "CurrentInfo.h",
+        "cmake": "CMakeLists.txt"
+    }
+}
