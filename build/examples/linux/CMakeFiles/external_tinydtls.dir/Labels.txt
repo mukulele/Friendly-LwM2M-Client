@@ -1,0 +1,14 @@
+# Target labels
+ external_tinydtls
+# Source files and their labels
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/CMakeFiles/external_tinydtls
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/CMakeFiles/external_tinydtls.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/CMakeFiles/external_tinydtls-complete.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-autoheader.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-build.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-configure.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-download.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-install.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-mkdir.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-patch.rule
+/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-update.rule

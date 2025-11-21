@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/CMakeFiles/external_tinydtls"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/CMakeFiles/external_tinydtls.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/CMakeFiles/external_tinydtls-complete.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-autoheader.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-build.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-configure.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-download.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-install.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-mkdir.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-patch.rule"
+		},
+		{
+			"file" : "/home/pi/Friendly-LwM2M-Client/build/examples/linux/external_tinydtls-prefix/src/external_tinydtls-stamp/external_tinydtls-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"external_tinydtls"
+		],
+		"name" : "external_tinydtls"
+	}
+}

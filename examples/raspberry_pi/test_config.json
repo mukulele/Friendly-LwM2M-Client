@@ -1,0 +1,6 @@
+{
+    "serverUrl": "http://localhost:3000",
+    "wsUrl": "ws://localhost:3000/signalk/v1/stream",
+    "clientId": "my-client-id",
+    "description": "C++ WebSocket Stream Test"
+}

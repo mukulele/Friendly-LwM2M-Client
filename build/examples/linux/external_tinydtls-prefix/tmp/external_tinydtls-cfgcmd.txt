@@ -1,0 +1,1 @@
+cmd='/home/pi/Friendly-LwM2M-Client/2305-Wakaama/examples/shared/tinydtls/configure;--host=clang'

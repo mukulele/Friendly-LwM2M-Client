@@ -1,0 +1,45 @@
+{
+  "configuration": {
+    "connectionParams": {
+      "endpoint": "signalk-lwm2m-1nce-client",
+      "serverPort": 5683,
+      "serverHost": "lwm2m.os.1nce.com",
+      "listenPort": 56830,
+      "useIPv4": true,
+      "request_bootstrap": true,
+      "dtlsConfig": {
+        "enableDTLS": false,
+        "PSK_Identity": "",
+        "PSK": ""
+      }
+    },
+    "connectionParams1": {
+      "endpoint": "signalk-lwm2m-client",
+      "serverPort": 5683,
+      "serverHost": "leshan.eclipseprojects.io",
+      "listenPort": 56830,
+      "useIPv4": true,
+      "request_bootstrap": false,
+      "dtlsConfig": {
+        "enableDTLS": false,
+        "PSK_Identity": "",
+        "PSK": ""
+      }
+    },
+    "clientParams": {
+      "initialObjects": "{\"3\":{\"0\":{\"0\":{\"type\":\"STRING\",\"acl\":\"R\",\"value\":\"Rasperry\",\"description\":\"Manufacturer\",\"path\":\"\"},\"1\":{\"type\":\"STRING\",\"acl\":\"R\",\"value\":\"4B\",\"description\":\"Model\",\"path\":\"\"},\"19\":{\"type\":\"STRING\",\"acl\":\"R\",\"value\":\"\",\"description\":\"Current software version of the device (manufacturer specified string). On elaborated LwM2M device, SW could be split in 2 parts: a firmware one and a higher level software on top.\\r\\nBoth pieces of Software are together managed by LwM2M Firmware Update Object (Object ID 5)\",\"path\":\"device.software.version\"}}},\"6\":{\"0\":{\"0\":{\"type\":\"FLOAT\",\"acl\":\"R\",\"value\":48.8,\"description\":\"The decimal notation of latitude, e.g. -43.5723 [World Geodetic System 1984].\",\"path\":\"navigation.position.latitude\"},\"1\":{\"type\":\"FLOAT\",\"acl\":\"R\",\"value\":9.5,\"description\":\"The decimal notation of longitude, e.g. 153.21760 [World Geodetic System 1984].\",\"path\":\"navigation.position.longitude\"},\"2\":{\"type\":\"FLOAT\",\"acl\":\"R\",\"value\":0,\"description\":\"The decimal notation of altitude in meters above sea level.\",\"path\":\"navigation.gnss.antennaAltitude\"},\"3\":{\"type\":\"FLOAT\",\"acl\":\"R\",\"value\":1.5,\"description\":\"The value in this resource indicates the radius of a circular area in meters. The circular area is used to describe uncertainty about a point for coordinates in a two-dimensional coordinate reference systems (CRS). The center point of a circular area is specified by using the Latitude and the Longitude Resources.\",\"path\":\"function.radius\"},\"4\":{\"type\":\"FUNCTION\",\"description\":\"The velocity of the LwM2M Client, as defined in [3GPP-TS_23.032].\",\"path\":\"function.velocity\"},\"6\":{\"type\":\"FLOAT\",\"acl\":\"R\",\"value\":0,\"description\":\"Speed is the time rate of change in position of a LwM2M Client without regard for direction: the scalar component of velocity.\",\"path\":\"navigation.speedOverGround\"}}},\"3201\":{\"0\":{\"5550\":{\"type\":\"BOOLEAN\",\"acl\":\"RW\",\"value\":false,\"description\":\"The current state of a digital output.\",\"path\":\"electrical.switches.anchorLight\"}}},\"3336\":{\"0\":{\"5750\":{\"type\":\"String\",\"acl\":\"RW\",\"value\":\"\",\"description\":\"Application Type\",\"path\":\"notifications.*.*.message\"},\"6051\":{\"type\":\"Float\",\"acl\":\"R\",\"value\":\"\",\"description\":\"Numeric Latitude\",\"path\":\"notifications.*.mob.position.latitude\"},\"6052\":{\"type\":\"Float\",\"acl\":\"R\",\"value\":\"\",\"description\":\"Numeric Longitude\",\"path\":\"notifications.*.mob.position.longitude\"}}},\"3342\":{\"0\":{\"5500\":{\"type\":\"Boolean\",\"acl\":\"R\",\"value\":true,\"description\":\"Digital Input State\",\"path\":\"electrical.switches.anchorLight.state\"}}}}",
+      "lazy_start": false,
+      "bootstrapInterval": 60,
+      "lifetime": 300,
+      "reconnect": 0,
+      "disableClient": false,
+      "saveProvisionedConfig": false,
+      "hide_sensitive_device_info": false,
+      "enableClientLogging": true,
+      "dump_lwm2m_messages": true,
+      "propagate_internal_events": true
+    }
+  },
+  "enabled": false,
+  "enableDebug": true
+}
