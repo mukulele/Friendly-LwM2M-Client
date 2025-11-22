@@ -4,7 +4,7 @@
  * Created by: Sinai RnD
  */
 
-#include "o_3336_location/Location.h"
+#include "o_3336_location/Location1.h"
 
 #include "Resource.h"
 #include "ItemOp.h"
@@ -15,11 +15,11 @@
 /* --------------- Code_cpp block 0 start --------------- */
 /* --------------- Code_cpp block 0 end --------------- */
 
-#define TAG "Location"
+#define TAG "Location1"
 
 namespace wpp {
 
-Location::Location(lwm2m_context_t &context, const OBJ_LINK_T &id): Instance(context, id) {
+Location1::Location1(lwm2m_context_t &context, const OBJ_LINK_T &id): Instance(context, id) {
 
 	/* --------------- Code_cpp block 1 start --------------- */
 	/* --------------- Code_cpp block 1 end --------------- */
@@ -31,32 +31,32 @@ Location::Location(lwm2m_context_t &context, const OBJ_LINK_T &id): Instance(con
 	/* --------------- Code_cpp block 2 end --------------- */
 }
 
-Location::~Location() {
+Location1::~Location1() {
 	/* --------------- Code_cpp block 3 start --------------- */
 	/* --------------- Code_cpp block 3 end --------------- */
 }
 
-Object & Location::object(WppClient &ctx) {
+Object & Location1::object(WppClient &ctx) {
 	return ctx.registry().location();
 }
 
-Location * Location::instance(WppClient &ctx, ID_T instId) {
+Location1 * Location1::instance(WppClient &ctx, ID_T instId) {
 	Instance *inst = ctx.registry().location().instance(instId);
 	if (!inst) return NULL;
-	return static_cast<Location*>(inst);
+	return static_cast<Location1*>(inst);
 }
 
-Location * Location::createInst(WppClient &ctx, ID_T instId) {
+Location1 * Location1::createInst(WppClient &ctx, ID_T instId) {
 	Instance *inst = ctx.registry().location().createInstance(instId);
 	if (!inst) return NULL;
-	return static_cast<Location*>(inst);
+	return static_cast<Location1*>(inst);
 }
 
-bool Location::removeInst(WppClient &ctx, ID_T instId) {
+bool Location1::removeInst(WppClient &ctx, ID_T instId) {
 	return ctx.registry().location().remove(instId);
 }
 
-void Location::serverOperationNotifier(Instance *securityInst, ItemOp::TYPE type, const ResLink &resLink) {
+void Location1::serverOperationNotifier(Instance *securityInst, ItemOp::TYPE type, const ResLink &resLink) {
 	/* --------------- Code_cpp block 4 start --------------- */
 	/* --------------- Code_cpp block 4 end --------------- */
 
@@ -75,7 +75,7 @@ void Location::serverOperationNotifier(Instance *securityInst, ItemOp::TYPE type
 	/* --------------- Code_cpp block 5 end --------------- */
 }
 
-void Location::userOperationNotifier(ItemOp::TYPE type, const ResLink &resLink) {
+void Location1::userOperationNotifier(ItemOp::TYPE type, const ResLink &resLink) {
 	if (type == ItemOp::WRITE || type == ItemOp::DELETE) notifyResChanged(resLink.resId, resLink.resInstId);
 
 	/* --------------- Code_cpp block 6 start --------------- */
@@ -91,7 +91,7 @@ void Location::userOperationNotifier(ItemOp::TYPE type, const ResLink &resLink) 
 	/* --------------- Code_cpp block 6 end --------------- */
 }
 
-void Location::resourcesCreate() {
+void Location1::resourcesCreate() {
 	std::vector<Resource> resources = {
 		{NUMERIC_LATITUDE_6051,              ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::MANDATORY, TYPE_ID::FLOAT },  
 		{NUMERIC_LONGITUDE_6052,             ItemOp(ItemOp::READ),               IS_SINGLE::SINGLE, IS_MANDATORY::MANDATORY, TYPE_ID::FLOAT },  
@@ -123,7 +123,7 @@ void Location::resourcesCreate() {
 	setupResources(std::move(resources));
 }
 
-void Location::resourcesInit() {
+void Location1::resourcesInit() {
 	/* --------------- Code_cpp block 7 start --------------- */
 	resource(NUMERIC_LATITUDE_6051)->set<FLOAT_T>( /* TODO */ );
 	resource(NUMERIC_LATITUDE_6051)->setDataVerifier( /* TODO */ );

@@ -3,7 +3,6 @@
 #include <chrono>
 
 #include "Connection.h"
-#include "read_config.h"
 #include "objects.h"
 
 using namespace std;
@@ -40,20 +39,19 @@ void wppErrorHandler(WppClient &client, int errCode) {
 // TODO: Device work with NON confirmation messages
 
 int main() {
-
 	cout << endl << "---- Creating required components ----" << endl;
-	std::unique_ptr<Connection> connection = createConnectionFromConfig();
+	Connection connection("56830", AF_INET);
 
 	// Client initialization
 	cout << endl << "---- Creating WppClient ----" << endl;
-	string clientName = getClientNameFromConfig();
+	string clientName = "Lwm2mRPiClient";
 	#if DTLS_WITH_PSK
 	clientName += "PSK";
 	#elif DTLS_WITH_RPK
 	clientName += "RPK";
 	#endif
 	cout << "WppClient name: " << clientName << endl;
-	WppClient::create({clientName, "", ""}, *connection, wppErrorHandler);
+	WppClient::create({clientName, "", ""}, connection, wppErrorHandler);
 	WppClient *client = WppClient::takeOwnershipBlocking();
 
 	// Initialize wpp objects
@@ -98,7 +96,7 @@ int main() {
 	#endif
 
 	cout << endl << "---- Starting Connection thread ----" << endl;
-	thread my_thread(socketPolling, connection.get());
+	thread my_thread(socketPolling, &connection);
 
 	time_t callTime = 0;
 	for (int iterationCnt = 0; !isDeviceShouldBeRebooted(); iterationCnt++) {
@@ -123,4 +121,3 @@ int main() {
 	
 	return 0;
 }
-

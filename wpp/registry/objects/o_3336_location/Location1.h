@@ -7,8 +7,8 @@
 #ifndef WPP_O_3336_LOCATION_H
 #define WPP_O_3336_LOCATION_H
 
-#include "LocationConfig.h"
-#include "LocationInfo.h"
+#include "LocationConfig1.h"
+#include "LocationInfo1.h"
 #include "Instance.h"
 #include "InstSubject.h"
 
@@ -23,7 +23,7 @@ class Object;
 /* --------------- Сode_h block 1 start --------------- */
 /* --------------- Сode_h block 1 end --------------- */
 
-class Location : public Instance {
+class Location1 : public Instance {
 public:
 	enum ID: ID_T {
 		NUMERIC_LATITUDE_6051 = 6051,
@@ -58,8 +58,8 @@ public:
 	/* --------------- Code_h block 2 end --------------- */
 
 public:
-	Location(lwm2m_context_t &context, const OBJ_LINK_T &id);
-	~Location();
+	Location1(lwm2m_context_t &context, const OBJ_LINK_T &id);
+	~Location1();
 
 	/* --------------- Helpful methods --------------- */
 	/**
@@ -75,7 +75,7 @@ public:
 	 * @param instId The instance ID. If not provided, the first available instance is returned.
 	 * @return A pointer to the Instance object or NULL.
 	 */
-	static Location * instance(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
+	static Location1 * instance(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
 
 	/**
 	 * @brief Creates an instance of the object.
@@ -83,7 +83,7 @@ public:
 	 * @param instanceID The instance ID.
 	 * @return A pointer to the created Instance object or NULL.
 	 */
-	static Location * createInst(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
+	static Location1 * createInst(WppClient &ctx, ID_T instId = ID_T_MAX_VAL);
 
 	/**
 	 * @brief Removes an instance of the object.

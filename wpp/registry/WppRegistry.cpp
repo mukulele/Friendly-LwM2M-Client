@@ -75,7 +75,7 @@ WppRegistry::WppRegistry(lwm2m_context_t &context): _context(context) {
 	_objects.push_back(new ObjectImpl<Power>(_context, POWER_OBJ_INFO));
 	#endif
 	#if OBJ_O_3336_LOCATION
-	_objects.push_back(new ObjectImpl<Location>(_context, LOCATION_OBJ_INFO));
+	_objects.push_back(new ObjectImpl<Location1>(_context, LOCATION_OBJ_INFO));
 	#endif
 	#if OBJ_O_3342_ON_OFF_SWITCH
 	_objects.push_back(new ObjectImpl<On_offSwitch>(_context, ON_OFF_SWITCH_OBJ_INFO));
@@ -229,8 +229,8 @@ Object & WppRegistry::power() {
 }
 #endif
 #if OBJ_O_3336_LOCATION
-Object & WppRegistry::location() {
-	return *object(OBJ_ID::LOCATION);
+Object & WppRegistry::location1() {
+	return *object(OBJ_ID::LOCATION1);
 }
 #endif
 #if OBJ_O_3342_ON_OFF_SWITCH

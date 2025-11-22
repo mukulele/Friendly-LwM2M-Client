@@ -79,7 +79,7 @@
 #include "o_3328_power/Power.h"
 #endif
 #ifdef OBJ_O_3336_LOCATION
-#include "o_3336_location/Location.h"
+#include "o_3336_location/Location1.h"
 #endif
 #ifdef OBJ_O_3342_ON_OFF_SWITCH
 #include "o_3342_on_off_switch/On_offSwitch.h"
@@ -223,7 +223,7 @@ public:
 	Object & power();
 	#endif
 	#ifdef OBJ_O_3336_LOCATION
-	Object & location();
+	Object & location1();
 	#endif
 	#ifdef OBJ_O_3342_ON_OFF_SWITCH
 	Object & on_offSwitch();

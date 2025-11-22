@@ -4,8 +4,6 @@
 
 #include "Connection.h"
 #include "objects.h"
-#include "WppClient.h"
-#include "WppRegistry.h"
 
 using namespace std;
 using namespace wpp;
@@ -54,9 +52,7 @@ int main() {
 	#endif
 	cout << "WppClient name: " << clientName << endl;
 	WppClient::create({clientName, "", ""}, connection, wppErrorHandler);
-	if (WppClient::isCreated() == false) return -1;
 	WppClient *client = WppClient::takeOwnershipBlocking();
-	WppRegistry &registry = client->registry();
 
 	// Initialize wpp objects
 	#ifdef OBJ_O_2_LWM2M_ACCESS_CONTROL
@@ -80,7 +76,116 @@ int main() {
 	cout << endl << "---- Initialization wpp AudioClip ----" << endl;
 	audioClipInit(*client);
 	#endif
-	
+	#ifdef OBJ_O_6_location
+	cout << endl << "---- Initialization wpp 6_Location ----" << endl;
+	6_locationInit(*client);
+	#endif
+	#ifdef OBJ_o_3201_digital_output
+	cout << endl << "---- Initialization 3201_digital_output ----" << endl;
+	3201_digital_outputInit(*client);
+	#endif
+	#ifdef OBJ_o_3202_analog_input
+	cout << endl << "---- Initialization wpp 3202_analog_inp ----" << endl;
+	3202_analog_inpInit(*client);
+	#endif
+	#ifdef OBJ_o_3203_analog_output
+	cout << endl << "---- Initialization wpp 3203_analog_output ----" << endl;
+	3203_analog_outputInit(*client);
+	#endif
+	#ifdef OBJ_o_3300_generic_sensor
+	cout << endl << "---- Initialization wpp 3300_generic_sensor ----" << endl;
+	3300_generic_sensorInit(*client);
+	#endif
+	#ifdef OBJ_o_3301_temperature
+	cout << endl << "---- Initialization wpp 3301_temperature ----" << endl;
+	3301_temperatureInit(*client);
+	#endif
+	#ifdef OBJ_o_3303_temperature
+	cout << endl << "---- Initialization wpp 3303_temperature ----" << endl;
+	3303_temperatureInit(*client);
+	#endif
+	#ifdef OBJ_o_3311_light_control
+	cout << endl << "---- Initialization wpp 3311_light_control ----" << endl;
+	3311_light_controlInit(*client);
+	#endif
+	#ifdef OBJ_o_3313_accelerometer
+	cout << endl << "---- Initialization wpp 3313_accelerometer ----" << endl;
+	3313_accelerometerInit(*client);
+	#endif
+	#ifdef OBJ_o_3316_voltage
+	cout << endl << "---- Initialization wpp 3316_voltage ----" << endl;
+	3316_voltageInit(*client);
+	#endif
+	#ifdef OBJ_o_3317_current
+	cout << endl << "---- Initialization wpp 3317_current ----" << endl;
+	3317_currentInit(*client);
+	#endif
+	#ifdef OBJ_o_3322_load
+	cout << endl << "---- Initialization wpp 3322_load ----" << endl;
+	3322_loadInit(*client);
+	#endif
+	#ifdef OBJ_o_3323_pressure
+	cout << endl << "---- Initialization wpp 3323_pressure ----" << endl;
+	3323_pressureInit(*client);
+	#endif
+	#ifdef OBJ_o_3328_power
+	cout << endl << "---- Initialization wpp 3328_power ----" << endl;
+	3328_powerInit(*client);
+	#endif
+	#ifdef OBJ_o_3336_location
+	cout << endl << "---- Initialization wpp 3336_location ----" << endl;
+	3336_locationInit(*client);
+	#endif
+	#ifdef OBJ_o_3342_on_off_switch
+	cout << endl << "---- Initialization wpp 3342_on_off_switch ----" << endl;
+	3342_on_off_switchInit(*client);
+	#endif
+	#ifdef OBJ_o_3347_push_button
+	cout << endl << "---- Initialization wpp 3347_push_button ----" << endl;
+	3347_push_buttonInit(*client);
+	#endif
+	#ifdef OBJ_o_3311_light_control
+	cout << endl << "---- Initialization wpp 3311_light_control ----" << endl;
+	3311_light_controlInit(*client);
+	#endif
+	#ifdef OBJ_o_3313_accelerometer
+	cout << endl << "---- Initialization wpp 3313_accelerometer ----" << endl;
+	3313_accelerometerInit(*client);
+	#endif
+	#ifdef OBJ_o_3316_voltage
+	cout << endl << "---- Initialization wpp 3316_voltage ----" << endl;
+	3316_voltageInit(*client);
+	#endif
+	#ifdef OBJ_o_3317_current
+	cout << endl << "---- Initialization wpp 3317_current ----" << endl;
+	3317_currentInit(*client);
+	#endif
+	#ifdef OBJ_o_3322_load
+	cout << endl << "---- Initialization wpp Location ----" << endl;
+	locationInit(*client);
+	#endif
+	#ifdef OBJ_o_3323_pressure
+	cout << endl << "---- Initialization wpp 3323_pressure ----" << endl;
+	3323_pressureInit(*client);
+	#endif
+	#ifdef OBJ_o_3328_power
+	cout << endl << "---- Initialization wpp 3328_power ----" << endl;
+	3328_powerInit(*client);
+	#endif
+	#ifdef OBJ_o_3336_location
+	cout << endl << "---- Initialization wpp 3336_location ----" << endl;
+	3336_locationInit(*client);
+	#endif
+	#ifdef OBJ_o_3342_on_off_switch
+	cout << endl << "---- Initialization wpp 3342_on_off_switch ----" << endl;
+	3342_on_off_switchInit(*client);
+	#endif
+	#ifdef OBJ_o_3347_push_button	
+	cout << endl << "---- Initialization wpp 3347_push_button ----" << endl;
+	3347_push_buttonInit(*client);
+	#endif
+
+
 	// Giving ownership to registry
 	client->giveOwnership();
 
@@ -120,4 +225,3 @@ int main() {
 	
 	return 0;
 }
-

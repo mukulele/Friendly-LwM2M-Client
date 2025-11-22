@@ -4,7 +4,7 @@
 wpp_check_definition("OBJ_O_3336_LOCATION" is_defined)
 if(is_defined)
 	# Update SOURCES variable from parent scope.
-	set(WPP_SOURCES ${WPP_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/Location.cpp)
+	set(WPP_SOURCES ${WPP_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/Location1.cpp)
 
 	# --------------- CMake block 0 start ---------------
 	# --------------- CMake block 0 end ---------------

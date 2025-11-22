@@ -8,16 +8,16 @@
         "is_multiple": true
     },
     "object_names": {
-        "class": "Location",
-        "camelcase": "location",
+        "class": "Location1",
+        "camelcase": "location1",
         "define": "OBJ_O_3336_LOCATION",
-        "up_underline": "LOCATION"
+        "up_underline": "LOCATION1"
     },
     "object_files": {
-        "impl_h": "Location.h",
-        "impl_cpp": "Location.cpp",
-        "config": "LocationConfig.h",
-        "info": "LocationInfo.h",
+        "impl_h": "Location1.h",
+        "impl_cpp": "Location1.cpp",
+        "config": "LocationConfig1.h",
+        "info": "LocationInfo1.h",
         "cmake": "CMakeLists.txt"
     }
 }

@@ -80,7 +80,7 @@ enum OBJ_ID: ID_T {
 	POWER = 3328,
 	#endif
 	#ifdef OBJ_O_3336_LOCATION
-	LOCATION = 3336,
+	LOCATION1 = 3336,
 	#endif
 	#ifdef OBJ_O_3342_ON_OFF_SWITCH
 	ON_OFF_SWITCH = 3342,
