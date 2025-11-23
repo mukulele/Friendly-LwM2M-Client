@@ -49,7 +49,7 @@ void serverInit(WppClient &client) {
 void securityInit(WppClient &client) {
     client.registry().registerObj(Lwm2mSecurity::object(client));
     wpp::Instance *security = Lwm2mSecurity::createInst(client);
-    string url = "coaps://qa62.friendly-tech.com:"; //"coaps://leshan.eclipseprojects.io:"
+    string url = "coap://leshan.eclipseprojects.io:"; //"coaps://leshan.eclipseprojects.io:"
 
     // PSK key: 00112233445566778899998877665544
     // RPK public.pem: 3059301306072a8648ce3d020106082a8648ce3d03010703420004bada5475344ba22961a7d965ac518e73481a5f77832bd996c2fa3527e8f3c4248dda621fa9c1348d1365c357357c54869477e387fd2c2675b1c6f28aa506677b
@@ -116,29 +116,6 @@ void deviceInit(WppClient &client) {
 	#endif
 }
 
-#ifdef OBJ_O_5_FIRMWARE_UPDATE
-void fwUpdaterInit(WppClient &client) {
-    #if RES_5_8
-    static FwUriDownloader fwUriDownloader;
-	#endif
-    static FwAutoDownloader fwAutoDownloader;
-	static FirmwareUpdater fwUpdater;
-
-    client.registry().registerObj(FirmwareUpdate::object(client));
-    FirmwareUpdate::createInst(client);
-
-    FirmwareUpdate::setFwUpdater(client, fwUpdater);
-    FirmwareUpdate::setFwInternalDownloader(client, fwAutoDownloader);
-    #if RES_5_8
-    FirmwareUpdate::setFwExternalDownloader(client, fwUriDownloader);
-    #endif
-
-    #if OBJ_O_2_LWM2M_ACCESS_CONTROL
-	Lwm2mAccessControl::create(FirmwareUpdate::object(client), Lwm2mAccessControl::ALL_OBJ_RIGHTS);
-	Lwm2mAccessControl::create(*FirmwareUpdate::instance(client), TEST_SERVER_SHORT_ID);
-	#endif
-}
-#endif
 
 #ifdef OBJ_O_2_LWM2M_ACCESS_CONTROL
 void acInit(WppClient &client) {
@@ -173,6 +150,142 @@ void audioClipInit(WppClient &client) {
 	Lwm2mAccessControl::create(*AudioClip::instance(client), TEST_SERVER_SHORT_ID);
 	#endif
 }
+#endif
+
+#ifdef OBJ_O_6_location
+void 6_locationInit(WppClient &client) {
+    client.registry().registerObj())
+        }
+#endif
+
+#ifdef OBJ_o_3201_digital_output
+void 3201_digital_outputInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3202_analog_input
+void 3202_analog_inpInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3203_analog_output
+void 3203_analog_outputInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3300_generic_sensor
+void 3300_generic_sensorInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3301_temperature
+void 3301_temperatureInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3303_temperature
+void 3303_temperatureInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3311_light_control
+void 3311_light_controlInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3313_accelerometer
+void 3313_accelerometerInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3316_voltage
+void 3316_voltageInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3317_current
+void 3317_currentInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3322_load
+void 3322_loadInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3323_pressure
+void 3323_pressureInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3328_power
+void 3328_powerInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3336_location
+void 3336_locationInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3342_on_off_switch
+void 3342_on_off_switchInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3347_push_button
+void 3347_push_buttonInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3311_light_control
+void 3311_light_controlInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3313_accelerometer
+void 3313_accelerometerInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3316_voltage
+void 3316_voltageInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3317_current
+void 3317_currentInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3322_load
+void locationInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3323_pressure
+void 3323_pressureInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3328_power
+void 3328_powerInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3336_location
+void 3336_locationInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3342_on_off_switch
+void 3342_on_off_switchInit(WppClient &client) {
+    client.registry().registerObj()}
+#endif
+
+#ifdef OBJ_o_3347_push_button
+void 3347_push_buttonInit(WppClient &client) {
+    client.registry().registerObj()}
 #endif
 
 /* ------------- Helpful methods ------------- */

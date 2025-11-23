@@ -71,7 +71,7 @@ if(is_defined)
     # Add libcoap to the project
     target_link_libraries(WppLinuxExample ${libcoap_path}/libcoap-3.so CURL::libcurl OpenSSL::SSL OpenSSL::Crypto)
     # Add FirmwareUpdater to the project
-    add_subdirectory(${CMAKE_SOURCE_DIR}/examples/shared/FirmwareUpdater linux_fw_upd)
+    #add_subdirectory(${CMAKE_SOURCE_DIR}/examples/shared/FirmwareUpdater linux_fw_upd)
 endif()
 
 # Include sources

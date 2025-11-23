@@ -64,10 +64,7 @@ int main() {
 	securityInit(*client);
 	cout << endl << "---- Initialization wpp Device ----" << endl;
 	deviceInit(*client);
-	#ifdef OBJ_O_5_FIRMWARE_UPDATE
-	cout << endl << "---- Initialization wpp FirmwareUpdate ----" << endl;
-	fwUpdaterInit(*client);
-	#endif
+
 	#ifdef OBJ_O_4_CONNECTIVITY_MONITORING
 	cout << endl << "---- Initialization wpp ConnectivityMonitoring ----" << endl;
 	connMonitoringInit(*client);
