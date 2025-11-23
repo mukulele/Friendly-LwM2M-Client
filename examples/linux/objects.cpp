@@ -106,8 +106,8 @@ void deviceInit(WppClient &client) {
     });
     device->set<INT_T>(Device::ERROR_CODE_11, 0, Device::NO_ERROR);
     device->set<STRING_T>(Device::SUPPORTED_BINDING_AND_MODES_16, WPP_BINDING_UDP);
-    device->set<STRING_T>(Device::MANUFACTURER_0, "Friendly");
-    device->set<STRING_T>(Device::MODEL_NUMBER_1, "Lightweight M2M Client");
+    device->set<STRING_T>(Device::MANUFACTURER_0, "Raspberry");
+    device->set<STRING_T>(Device::MODEL_NUMBER_1, "Pi 4B");
     device->set<STRING_T>(Device::SERIAL_NUMBER_2, "0123456789");
 
     #if OBJ_O_2_LWM2M_ACCESS_CONTROL

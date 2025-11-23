@@ -35,6 +35,99 @@ void wppErrorHandler(WppClient &client, int errCode) {
 	}
 }
 
+// So this is the entire core interface for wpp::WppRegistry, it allows to register objects and access them.
+bool objects_registering(WppClient &client) {
+    WppRegistry &registry = client.registry();
+ 
+    if (registry.isExist(OBJ_ID::CONNECTIVITY_MONITORING) == false) return false;
+    if (registry.isExist(OBJ_ID::LWM2M_ACCESS_CONTROL) == false) return false;
+    if (registry.isExist(OBJ_ID::FIRMWARE_UPDATE) == false) return false;
+	if (registry.isExist(OBJ_ID::AUDIO_CLIP) == false) return false;
+	if (registry.isExist(OBJ_ID::DIGITAL_OUTPUT) == false) return false;
+	if (registry.isExist(OBJ_ID::PUSH_BUTTON) == false) return false;
+	if (registry.isExist(OBJ_ID::TEMPERATURE) == false) return false;
+	if (registry.isExist(OBJ_ID::ACCELEROMETER) == false) return false;
+	if (registry.isExist(OBJ_ID::LOCATION) == false) return false;
+	if (registry.isExist(OBJ_ID::ANALOG_INPUT) == false) return false;
+	if (registry.isExist(OBJ_ID::ANALOG_OUTPUT) == false) return false;
+	if (registry.isExist(OBJ_ID::GENERIC_SENSOR) == false) return false;
+	if (registry.isExist(OBJ_ID::LIGHT_CONTROL) == false) return false;
+	if (registry.isExist(OBJ_ID::VOLTAGE) == false) return false;
+	if (registry.isExist(OBJ_ID::CURRENT) == false) return false;
+	if (registry.isExist(OBJ_ID::LOAD) == false) return false;
+	if (registry.isExist(OBJ_ID::PRESSURE) == false) return false;
+	if (registry.isExist(OBJ_ID::POWER) == false) return false;
+	if (registry.isExist(OBJ_ID::LOCATION1) == false) return false;
+	if (registry.isExist(OBJ_ID::ON_OFF_SWITCH) == false) return false;
+	
+ 
+    Object &connMon = registry.connectivityMonitoring();
+    Object &acl = registry.lwm2mAccessControl();
+    Object *fwUpd = registry.object(OBJ_ID::FIRMWARE_UPDATE);
+	Object &audioClip = registry.object(OBJ_ID::AUDIO_CLIP);
+	Object &digitalOutput = registry.object(OBJ_ID::DIGITAL_OUTPUT);
+	Object &pushButton = registry.object(OBJ_ID::PUSH_BUTTON);
+	Object &temperature = registry.object(OBJ_ID::TEMPERATURE);
+	Object &accelerometer = registry.object(OBJ_ID::ACCELEROMETER);
+	Object &location = registry.object(OBJ_ID::LOCATION);
+	Object &analogInput = registry.object(OBJ_ID::ANALOG_INPUT);
+	Object &analogOutput = registry.object(OBJ_ID::ANALOG_OUTPUT);
+	Object &genericSensor = registry.object(OBJ_ID::GENERIC_SENSOR);
+	Object &lightControl = registry.object(OBJ_ID::LIGHT_CONTROL);
+	Object &voltage = registry.object(OBJ_ID::VOLTAGE);
+	Object &current = registry.object(OBJ_ID::CURRENT);
+	Object &load = registry.object(OBJ_ID::LOAD);
+	Object &pressure = registry.object(OBJ_ID::PRESSURE);
+	Object &power = registry.object(OBJ_ID::POWER);
+	Object &location1 = registry.object(OBJ_ID::LOCATION1);
+	Object &onOffSwitch = registry.object(OBJ_ID::ON_OFF_SWITCH);
+
+    registry.registerObj(connMon);
+    registry.registerObj(acl);
+    registry.registerObj(*fwUpd);
+    registry.registerObj(audioClip);
+    registry.registerObj(digitalOutput);
+    registry.registerObj(pushButton);
+    registry.registerObj(temperature);
+    registry.registerObj(accelerometer);
+    registry.registerObj(location);
+    registry.registerObj(analogInput);
+    registry.registerObj(analogOutput);
+    registry.registerObj(genericSensor);
+    registry.registerObj(lightControl);
+    registry.registerObj(voltage);
+    registry.registerObj(current);
+    registry.registerObj(load);
+    registry.registerObj(pressure);
+    registry.registerObj(power);
+    registry.registerObj(location1);
+    registry.registerObj(onOffSwitch);
+ 
+	
+    if (registry.isObjRegistered(connMon) == false) return false;
+    if (registry.isObjRegistered(acl) == false) return false;
+    if (registry.isObjRegistered(*fwUpd) == false) return false;
+    if (registry.isObjRegistered(audioClip) == false) return false;
+    if (registry.isObjRegistered(digitalOutput) == false) return false;
+    if (registry.isObjRegistered(pushButton) == false) return false;
+    if (registry.isObjRegistered(temperature) == false) return false;
+    if (registry.isObjRegistered(accelerometer) == false) return false;
+    if (registry.isObjRegistered(location) == false) return false;
+    if (registry.isObjRegistered(analogInput) == false) return false;
+    if (registry.isObjRegistered(analogOutput) == false) return false;
+    if (registry.isObjRegistered(genericSensor) == false) return false;
+    if (registry.isObjRegistered(lightControl) == false) return false;
+    if (registry.isObjRegistered(voltage) == false) return false;
+    if (registry.isObjRegistered(current) == false) return false;
+    if (registry.isObjRegistered(load) == false) return false;
+    if (registry.isObjRegistered(pressure) == false) return false;
+    if (registry.isObjRegistered(power) == false) return false;
+    if (registry.isObjRegistered(location1) == false) return false;
+    if (registry.isObjRegistered(onOffSwitch) == false) return false;
+	
+    return true;
+}
+
 // Found Wakaama bugs:
 // TODO: Device work with NON confirmation messages
 
@@ -64,7 +157,6 @@ int main() {
 	securityInit(*client);
 	cout << endl << "---- Initialization wpp Device ----" << endl;
 	deviceInit(*client);
-
 	#ifdef OBJ_O_4_CONNECTIVITY_MONITORING
 	cout << endl << "---- Initialization wpp ConnectivityMonitoring ----" << endl;
 	connMonitoringInit(*client);
@@ -73,6 +165,7 @@ int main() {
 	cout << endl << "---- Initialization wpp AudioClip ----" << endl;
 	audioClipInit(*client);
 	#endif
+	/*
 	#ifdef OBJ_O_6_location
 	cout << endl << "---- Initialization wpp 6_Location ----" << endl;
 	6_locationInit(*client);
@@ -181,7 +274,7 @@ int main() {
 	cout << endl << "---- Initialization wpp 3347_push_button ----" << endl;
 	3347_push_buttonInit(*client);
 	#endif
-
+*/
 
 	// Giving ownership to registry
 	client->giveOwnership();
@@ -222,3 +315,4 @@ int main() {
 	
 	return 0;
 }
+
