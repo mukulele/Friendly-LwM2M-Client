@@ -26,9 +26,9 @@ void connMonitoringInit(WppClient &client);
 void audioClipInit(WppClient &client);
 #endif
 
-	#ifdef OBJ_O_6_location
-	void 6_locationInit(WppClient &client);
-	#endif
+#ifdef OBJ_O_6_location
+void 6_locationInit(WppClient &client);
+#endif
 
 	#ifdef OBJ_o_3201_digital_output
 	void 3201_digital_outputInit(WppClient &client);

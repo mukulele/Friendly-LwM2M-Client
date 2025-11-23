@@ -2,11 +2,6 @@
 #define USER_OBJECTS_H
 
 #include "WppClient.h"
-#if OBJ_O_5_FIRMWARE_UPDATE
-#include "FwUriDownloader.h"
-#include "FwAutoDownloader.h"
-#include "FirmwareUpdater.h"
-#endif
 
 using namespace wpp;
 

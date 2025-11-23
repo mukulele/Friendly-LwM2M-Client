@@ -5,6 +5,7 @@
 #include "Connection.h"
 #include "objects.h"
 
+
 using namespace std;
 using namespace wpp;
 
@@ -41,7 +42,6 @@ bool objects_registering(WppClient &client) {
  
     if (registry.isExist(OBJ_ID::CONNECTIVITY_MONITORING) == false) return false;
     if (registry.isExist(OBJ_ID::LWM2M_ACCESS_CONTROL) == false) return false;
-    if (registry.isExist(OBJ_ID::FIRMWARE_UPDATE) == false) return false;
 	if (registry.isExist(OBJ_ID::AUDIO_CLIP) == false) return false;
 	if (registry.isExist(OBJ_ID::DIGITAL_OUTPUT) == false) return false;
 	if (registry.isExist(OBJ_ID::PUSH_BUTTON) == false) return false;
@@ -63,7 +63,6 @@ bool objects_registering(WppClient &client) {
  
     Object &connMon = registry.connectivityMonitoring();
     Object &acl = registry.lwm2mAccessControl();
-    Object *fwUpd = registry.object(OBJ_ID::FIRMWARE_UPDATE);
 	Object &audioClip = registry.object(OBJ_ID::AUDIO_CLIP);
 	Object &digitalOutput = registry.object(OBJ_ID::DIGITAL_OUTPUT);
 	Object &pushButton = registry.object(OBJ_ID::PUSH_BUTTON);
@@ -84,7 +83,6 @@ bool objects_registering(WppClient &client) {
 
     registry.registerObj(connMon);
     registry.registerObj(acl);
-    registry.registerObj(*fwUpd);
     registry.registerObj(audioClip);
     registry.registerObj(digitalOutput);
     registry.registerObj(pushButton);
@@ -106,7 +104,6 @@ bool objects_registering(WppClient &client) {
 	
     if (registry.isObjRegistered(connMon) == false) return false;
     if (registry.isObjRegistered(acl) == false) return false;
-    if (registry.isObjRegistered(*fwUpd) == false) return false;
     if (registry.isObjRegistered(audioClip) == false) return false;
     if (registry.isObjRegistered(digitalOutput) == false) return false;
     if (registry.isObjRegistered(pushButton) == false) return false;
@@ -161,15 +158,18 @@ int main() {
 	cout << endl << "---- Initialization wpp ConnectivityMonitoring ----" << endl;
 	connMonitoringInit(*client);
 	#endif
-	#ifdef OBJ_O_3339_AUDIO_CLIP
-	cout << endl << "---- Initialization wpp AudioClip ----" << endl;
-	audioClipInit(*client);
-	#endif
-	/*
+	
+	//#ifdef OBJ_O_3339_AUDIO_CLIP
+	//cout << endl << "---- Initialization wpp AudioClip ----" << endl;
+	//audioClipInit(*client);
+	//#endif
+	
 	#ifdef OBJ_O_6_location
 	cout << endl << "---- Initialization wpp 6_Location ----" << endl;
 	6_locationInit(*client);
 	#endif
+	
+	/*
 	#ifdef OBJ_o_3201_digital_output
 	cout << endl << "---- Initialization 3201_digital_output ----" << endl;
 	3201_digital_outputInit(*client);

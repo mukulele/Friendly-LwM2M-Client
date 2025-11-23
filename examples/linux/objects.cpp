@@ -153,11 +153,17 @@ void audioClipInit(WppClient &client) {
 #endif
 
 #ifdef OBJ_O_6_location
-void 6_locationInit(WppClient &client) {
-    client.registry().registerObj())
-        }
+void locationInit(WppClient &client) {
+    client.registry().registerObj(Location::object(client));
+    Location::createInst(client);
+    #if OBJ_O_2_LWM2M_ACCESS_CONTROL
+    Lwm2mAccessControl::create(Location::object(client), Lwm2mAccessControl::ALL_OBJ_RIGHTS);
+    Lwm2mAccessControl::create(*Location::instance(client), TEST_SERVER_SHORT_ID);
+    #endif
+}
 #endif
 
+/*
 #ifdef OBJ_o_3201_digital_output
 void 3201_digital_outputInit(WppClient &client) {
     client.registry().registerObj()}
@@ -287,6 +293,7 @@ void 3342_on_off_switchInit(WppClient &client) {
 void 3347_push_buttonInit(WppClient &client) {
     client.registry().registerObj()}
 #endif
+*/
 
 /* ------------- Helpful methods ------------- */
 
